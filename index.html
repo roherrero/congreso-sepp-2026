@@ -150,6 +150,7 @@
     color: white;
     border-color: var(--primary);
   }
+  .filter-btn.day-mie.active { background: #5a4a7a; }
   .filter-btn.day-jue.active { background: #3d6b58; }
   .filter-btn.day-vie.active { background: #4a7a68; }
   .filter-btn.day-sab.active { background: #5a8a78; }
@@ -572,10 +573,10 @@
     <div class="filter-label">Día</div>
     <div class="filter-group">
       <button class="filter-btn active" onclick="toggleDay('all', this)">Todos</button>
+      <button class="filter-btn day-mie" onclick="toggleDay('mie', this)">Mié 13 mayo</button>
       <button class="filter-btn day-jue" onclick="toggleDay('jue', this)">Jue 14 mayo</button>
       <button class="filter-btn day-vie" onclick="toggleDay('vie', this)">Vie 15 mayo</button>
       <button class="filter-btn day-sab" onclick="toggleDay('sab', this)">Sáb 16 mayo</button>
-      <button class="filter-btn day-mie" onclick="toggleDay('mie', this)">Mié 13 mayo</button>
     </div>
   </div>
   <div>
@@ -659,7 +660,12 @@
   </div>
 
   <!-- WORKSHOPS -->
-  <div class="workshop-section" id="sec-talleres" data-type="taller" data-day="mie">
+  <div class="day-block" id="day-mie" data-day="mie">
+    <div class="day-header">
+      <div class="day-number">13</div>
+      <div class="day-info"><h2>Miércoles · Mayo 2026</h2><p>Talleres Pre-Congreso · 18:00–20:00h</p></div>
+    </div>
+    <div class="workshop-section" id="sec-talleres" data-type="taller" data-day="mie">
     <div class="workshop-title">🛠️ Talleres Pre-Congreso · Miércoles 13 mayo · 18:00–20:00h</div>
     <div class="workshop-item">
       <div class="workshop-num">1</div>
@@ -693,6 +699,7 @@
         <p style="font-size:0.7rem;color:#8b7faa;margin-top:0.2rem">📍 Aula 1.08</p>
       </div>
     </div>
+  </div>
   </div>
 
   <!-- JUEVES 14 -->
@@ -1725,9 +1732,8 @@
     }
     if (tallerSec) {
       const typeMatch = activeType === 'all' || activeType === 'taller';
-      const dayMatch = activeDay === 'all' || activeDay === 'mie';
       const roomMatch = activeRoom === 'all';
-      tallerSec.style.display = (typeMatch && dayMatch && roomMatch) ? '' : 'none';
+      tallerSec.style.display = (typeMatch && roomMatch) ? '' : 'none';
     }
 
     // Handle poster sections visibility
