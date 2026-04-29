@@ -1,0 +1,1728 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VII Congreso de Psicología Positiva · SEPP · Málaga 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f7f4ef;
+    --surface: #ffffff;
+    --primary: #1a3a2a;
+    --accent: #c8873a;
+    --accent2: #7cb88f;
+    --text: #1c1c1c;
+    --muted: #6b6b6b;
+    --border: #e0dbd3;
+    --tag-simp: #d4e8dc;
+    --tag-simp-text: #1a5c34;
+    --tag-com: #fde8cc;
+    --tag-com-text: #7a4010;
+    --tag-poster: #dce4f5;
+    --tag-poster-text: #1a3070;
+    --finalist: #f9e8c8;
+    --finalist-text: #7a4a00;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+  }
+
+  /* HEADER */
+  header {
+    background: var(--primary);
+    color: white;
+    padding: 2rem 1.5rem 1.5rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 20% 50%, rgba(124,184,143,0.25) 0%, transparent 60%),
+                radial-gradient(ellipse at 80% 50%, rgba(200,135,58,0.2) 0%, transparent 60%);
+  }
+  header > * { position: relative; }
+  .header-eyebrow {
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent2);
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+  }
+  header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.4rem, 4vw, 2.2rem);
+    font-weight: 900;
+    line-height: 1.2;
+    margin-bottom: 0.4rem;
+  }
+  header .subtitle {
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.7);
+    font-style: italic;
+    margin-bottom: 0.8rem;
+  }
+  header .meta {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.85);
+  }
+  header .meta span {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+  }
+
+  /* FILTERS */
+  .filters-wrap {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 1rem 1rem 0.75rem;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  }
+  .search-bar {
+    display: flex;
+    align-items: center;
+    background: var(--bg);
+    border: 1.5px solid var(--border);
+    border-radius: 8px;
+    padding: 0.5rem 0.75rem;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+  }
+  .search-bar input {
+    border: none;
+    background: transparent;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    width: 100%;
+    outline: none;
+    color: var(--text);
+  }
+  .search-bar svg { flex-shrink: 0; color: var(--muted); }
+
+  .filter-group {
+    display: flex;
+    gap: 0.4rem;
+    flex-wrap: wrap;
+    margin-bottom: 0.5rem;
+  }
+  .filter-label {
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    display: block;
+    margin-bottom: 0.3rem;
+  }
+  .filter-btn {
+    border: 1.5px solid var(--border);
+    background: white;
+    border-radius: 20px;
+    padding: 0.3rem 0.75rem;
+    font-size: 0.78rem;
+    font-family: 'DM Sans', sans-serif;
+    cursor: pointer;
+    transition: all 0.15s;
+    color: var(--text);
+    white-space: nowrap;
+  }
+  .filter-btn:hover { border-color: var(--primary); }
+  .filter-btn.active {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
+  }
+  .filter-btn.day-jue.active { background: #1a3a2a; }
+  .filter-btn.day-vie.active { background: #2a4a3a; }
+  .filter-btn.day-sab.active { background: #3a5a4a; }
+
+  .results-count {
+    font-size: 0.75rem;
+    color: var(--muted);
+    padding: 0.25rem 0;
+    text-align: right;
+  }
+
+  /* CONTENT */
+  main { padding: 1rem; max-width: 900px; margin: 0 auto; }
+
+  /* DAY BLOCK */
+  .day-block { margin-bottom: 2rem; }
+  .day-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+    padding: 0.75rem 1rem;
+    background: var(--primary);
+    border-radius: 10px;
+    color: white;
+  }
+  .day-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: 900;
+    line-height: 1;
+    color: var(--accent2);
+  }
+  .day-info h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    font-weight: 700;
+  }
+  .day-info p { font-size: 0.75rem; color: rgba(255,255,255,0.7); }
+
+  /* SESSION BLOCK */
+  .session-block { margin-bottom: 1.5rem; }
+  .session-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+  }
+  .session-time {
+    background: var(--accent);
+    color: white;
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: 0.2rem 0.6rem;
+    border-radius: 4px;
+    white-space: nowrap;
+  }
+  .session-name {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--muted);
+    letter-spacing: 0.05em;
+  }
+
+  /* SPECIAL EVENT */
+  .special-event {
+    background: linear-gradient(135deg, var(--primary) 0%, #2d5a3d 100%);
+    color: white;
+    border-radius: 10px;
+    padding: 1rem;
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .special-event .icon { font-size: 1.5rem; flex-shrink: 0; }
+  .special-event .ev-type {
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent2);
+    margin-bottom: 0.2rem;
+  }
+  .special-event h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.95rem;
+    margin-bottom: 0.1rem;
+  }
+  .special-event p { font-size: 0.78rem; color: rgba(255,255,255,0.75); }
+
+  /* MESA CARD */
+  .mesa-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    margin-bottom: 0.75rem;
+    overflow: hidden;
+    transition: box-shadow 0.2s;
+  }
+  .mesa-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.08); }
+  .mesa-card.hidden { display: none; }
+
+  .mesa-header {
+    padding: 0.85rem 1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    user-select: none;
+  }
+  .mesa-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--accent);
+    flex-shrink: 0;
+    min-width: 2rem;
+    line-height: 1;
+  }
+  .mesa-meta { flex: 1; min-width: 0; }
+  .mesa-tags {
+    display: flex;
+    gap: 0.4rem;
+    flex-wrap: wrap;
+    margin-bottom: 0.3rem;
+  }
+  .tag {
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.15rem 0.5rem;
+    border-radius: 3px;
+  }
+  .tag-simp { background: var(--tag-simp); color: var(--tag-simp-text); }
+  .tag-com { background: var(--tag-com); color: var(--tag-com-text); }
+  .tag-area {
+    background: #eee;
+    color: #555;
+  }
+  .mesa-title {
+    font-size: 0.88rem;
+    font-weight: 600;
+    line-height: 1.3;
+    margin-bottom: 0.2rem;
+  }
+  .mesa-coord {
+    font-size: 0.72rem;
+    color: var(--muted);
+    font-style: italic;
+  }
+  .mesa-toggle {
+    flex-shrink: 0;
+    color: var(--muted);
+    font-size: 0.9rem;
+    transition: transform 0.2s;
+    padding-top: 0.1rem;
+  }
+  .mesa-card.open .mesa-toggle { transform: rotate(180deg); }
+
+  .mesa-body {
+    display: none;
+    border-top: 1px solid var(--border);
+    padding: 0;
+  }
+  .mesa-card.open .mesa-body { display: block; }
+
+  .presenter-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    padding: 0.65rem 1rem;
+    border-bottom: 1px solid var(--border);
+    transition: background 0.1s;
+  }
+  .presenter-row:last-child { border-bottom: none; }
+  .presenter-row:hover { background: var(--bg); }
+  .presenter-row.finalist { background: var(--finalist); }
+  .presenter-row.finalist:hover { background: #f5dfa8; }
+
+  .presenter-name {
+    font-size: 0.82rem;
+    font-weight: 600;
+    min-width: 130px;
+    flex-shrink: 0;
+    line-height: 1.3;
+  }
+  .presenter-surname {
+    color: var(--primary);
+  }
+  .presenter-title {
+    font-size: 0.78rem;
+    color: var(--muted);
+    line-height: 1.35;
+    flex: 1;
+  }
+  .finalist-badge {
+    flex-shrink: 0;
+    font-size: 0.6rem;
+    background: var(--accent);
+    color: white;
+    padding: 0.1rem 0.4rem;
+    border-radius: 3px;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+
+  /* POSTER SECTION */
+  .poster-section { margin-bottom: 2rem; }
+  .poster-session-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+    padding: 0.6rem 0.8rem;
+    background: #e8edf5;
+    border-radius: 8px;
+  }
+  .poster-session-header h3 {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #1a3070;
+  }
+  .poster-session-header .poster-time {
+    font-size: 0.72rem;
+    color: #4a5a80;
+    margin-left: auto;
+  }
+
+  .poster-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 0.7rem 0.9rem;
+    margin-bottom: 0.5rem;
+    display: flex;
+    gap: 0.6rem;
+    transition: box-shadow 0.15s;
+  }
+  .poster-card:hover { box-shadow: 0 2px 8px rgba(0,0,0,0.07); }
+  .poster-card.hidden { display: none; }
+  .poster-num {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 1rem;
+    color: #5a70b0;
+    min-width: 1.5rem;
+    flex-shrink: 0;
+  }
+  .poster-authors {
+    font-size: 0.77rem;
+    font-weight: 600;
+    color: var(--primary);
+    margin-bottom: 0.2rem;
+    line-height: 1.3;
+  }
+  .poster-title {
+    font-size: 0.76rem;
+    color: var(--muted);
+    line-height: 1.35;
+  }
+
+  /* INVITED SPEAKERS */
+  .invited-section {
+    background: linear-gradient(135deg, #f0f7f3 0%, #fdf5ec 100%);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.2rem;
+    margin-bottom: 2rem;
+  }
+  .invited-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .speaker-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    padding: 0.7rem 0;
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+  }
+  .speaker-card:last-child { border-bottom: none; }
+  .speaker-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--primary);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  .speaker-info h4 {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--primary);
+    margin-bottom: 0.1rem;
+  }
+  .speaker-info p {
+    font-size: 0.72rem;
+    color: var(--muted);
+  }
+  .speaker-time {
+    margin-left: auto;
+    text-align: right;
+    flex-shrink: 0;
+  }
+  .speaker-time .stime {
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--accent);
+  }
+  .speaker-time .sday {
+    font-size: 0.65rem;
+    color: var(--muted);
+  }
+
+  /* WORKSHOPS */
+  .workshop-section {
+    background: #fef8f2;
+    border: 1px solid #f0d8c0;
+    border-radius: 12px;
+    padding: 1.2rem;
+    margin-bottom: 2rem;
+  }
+  .workshop-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #7a4010;
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .workshop-item {
+    padding: 0.6rem 0;
+    border-bottom: 1px solid #f0d8c0;
+    display: flex;
+    gap: 0.75rem;
+    align-items: flex-start;
+  }
+  .workshop-item:last-child { border-bottom: none; }
+  .workshop-num {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--accent);
+    flex-shrink: 0;
+    min-width: 1.5rem;
+  }
+  .workshop-info h4 { font-size: 0.85rem; font-weight: 600; margin-bottom: 0.15rem; }
+  .workshop-info p { font-size: 0.75rem; color: var(--muted); }
+
+  /* NO RESULTS */
+  .no-results {
+    text-align: center;
+    padding: 3rem 1rem;
+    color: var(--muted);
+    display: none;
+  }
+  .no-results.visible { display: block; }
+  .no-results p { font-size: 0.9rem; margin-top: 0.5rem; }
+
+  /* FOOTER */
+  footer {
+    text-align: center;
+    padding: 2rem 1rem;
+    font-size: 0.72rem;
+    color: var(--muted);
+    border-top: 1px solid var(--border);
+    margin-top: 2rem;
+  }
+
+  @media (max-width: 480px) {
+    .presenter-name { min-width: 100px; }
+    .speaker-time { display: none; }
+    .filter-btn { font-size: 0.72rem; padding: 0.25rem 0.6rem; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-eyebrow">SEPP · Sociedad Española de Psicología Positiva</div>
+  <h1>VII Congreso de<br>Psicología Positiva</h1>
+  <p class="subtitle">Construyendo Esperanza desde la Evidencia Científica</p>
+  <div class="meta">
+    <span>📅 13–16 de mayo de 2026</span>
+    <span>📍 Facultad de Psicología y Logopedia · Universidad de Málaga</span>
+  </div>
+</header>
+
+<div class="filters-wrap">
+  <div class="search-bar">
+    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+    <input type="text" id="searchInput" placeholder="Buscar por apellido, nombre o título…" oninput="applyFilters()">
+  </div>
+  <div>
+    <div class="filter-label">Día</div>
+    <div class="filter-group">
+      <button class="filter-btn active" onclick="toggleDay('all', this)">Todos</button>
+      <button class="filter-btn day-jue" onclick="toggleDay('jue', this)">Jue 14 mayo</button>
+      <button class="filter-btn day-vie" onclick="toggleDay('vie', this)">Vie 15 mayo</button>
+      <button class="filter-btn day-sab" onclick="toggleDay('sab', this)">Sáb 16 mayo</button>
+      <button class="filter-btn day-mie" onclick="toggleDay('mie', this)">Mié 13 mayo</button>
+    </div>
+  </div>
+  <div>
+    <div class="filter-label">Tipo</div>
+    <div class="filter-group">
+      <button class="filter-btn active" onclick="toggleType('all', this)">Todos</button>
+      <button class="filter-btn" onclick="toggleType('simp', this)">Simposio</button>
+      <button class="filter-btn" onclick="toggleType('com', this)">Comunicación</button>
+      <button class="filter-btn" onclick="toggleType('poster', this)">Póster</button>
+      <button class="filter-btn" onclick="toggleType('conf', this)">Conferencias</button>
+      <button class="filter-btn" onclick="toggleType('taller', this)">Talleres</button>
+    </div>
+  </div>
+  <div class="results-count" id="resultsCount"></div>
+</div>
+
+<main id="mainContent">
+
+  <!-- INVITED SPEAKERS -->
+  <div class="invited-section" id="sec-conf" data-type="conf" data-day="all">
+    <div class="invited-title">🎤 Conferenciantes Invitados</div>
+    <div class="speaker-card">
+      <div class="speaker-avatar">EB</div>
+      <div class="speaker-info">
+        <h4>Dr. Ernst Bohlmeijer</h4>
+        <p>University of Twente (Países Bajos)</p>
+      </div>
+      <div class="speaker-time"><div class="stime">10:15–11:00h</div><div class="sday">Jueves 14 mayo</div></div>
+    </div>
+    <div class="speaker-card">
+      <div class="speaker-avatar">EK</div>
+      <div class="speaker-info">
+        <h4>Dr. E. Kevin Kelloway</h4>
+        <p>St. Francis Xavier University (Canadá)</p>
+      </div>
+      <div class="speaker-time"><div class="stime">18:30–19:45h</div><div class="sday">Jueves 14 mayo</div></div>
+    </div>
+    <div class="speaker-card">
+      <div class="speaker-avatar">DD</div>
+      <div class="speaker-info">
+        <h4>Dr. Darío Díaz</h4>
+        <p>Universidad Castilla-La Mancha</p>
+      </div>
+      <div class="speaker-time"><div class="stime">10:15–11:00h</div><div class="sday">Viernes 15 mayo</div></div>
+    </div>
+    <div class="speaker-card">
+      <div class="speaker-avatar">KS</div>
+      <div class="speaker-info">
+        <h4>Dra. Kimberly A. Schonert-Reichl</h4>
+        <p>University of Illinois (Estados Unidos)</p>
+      </div>
+      <div class="speaker-time"><div class="stime">15:30–16:30h</div><div class="sday">Viernes 15 mayo</div></div>
+    </div>
+    <div class="speaker-card">
+      <div class="speaker-avatar">SA</div>
+      <div class="speaker-info">
+        <h4>Sarah Almagro</h4>
+        <p>Invitación especial</p>
+      </div>
+      <div class="speaker-time"><div class="stime">18:30–19:30h</div><div class="sday">Viernes 15 mayo</div></div>
+    </div>
+    <div class="speaker-card">
+      <div class="speaker-avatar">AC</div>
+      <div class="speaker-info">
+        <h4>Dr. Ausiàs Cebolla i Martí</h4>
+        <p>Universitat de València</p>
+      </div>
+      <div class="speaker-time"><div class="stime">11:00–11:45h</div><div class="sday">Sábado 16 mayo</div></div>
+    </div>
+  </div>
+
+  <!-- WORKSHOPS -->
+  <div class="workshop-section" id="sec-talleres" data-type="taller" data-day="mie">
+    <div class="workshop-title">🛠️ Talleres Pre-Congreso · Miércoles 13 mayo · 18:00–20:00h</div>
+    <div class="workshop-item">
+      <div class="workshop-num">1</div>
+      <div class="workshop-info">
+        <h4>«La fortaleza del Perdón»</h4>
+        <p>Dr. Óscar Sánchez Hernández y Lic. Ana Canales García</p>
+      </div>
+    </div>
+    <div class="workshop-item">
+      <div class="workshop-num">2</div>
+      <div class="workshop-info">
+        <h4>«Técnicas de la Terapia Sistémica Breve: Estrategias para activar recursos y promover el bienestar»</h4>
+        <p>Dr. Felipe García</p>
+      </div>
+    </div>
+    <div class="workshop-item">
+      <div class="workshop-num">3</div>
+      <div class="workshop-info">
+        <h4>«Cultivando el amor desde las ciencias contemplativas y el budismo»</h4>
+        <p>Dra. Sara de Rivas y Dr. Oscar Lecuona</p>
+      </div>
+    </div>
+    <div class="workshop-item">
+      <div class="workshop-num">4</div>
+      <div class="workshop-info">
+        <h4>«Crecer Respirando: herramientas de mindfulness y compasión para mejorar el desarrollo positivo y la salud mental en la escuela»</h4>
+        <p>Dr. Carlos García Rubio</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- JUEVES 14 -->
+  <div class="day-block" id="day-jue" data-day="jue">
+    <div class="day-header">
+      <div class="day-number">14</div>
+      <div class="day-info"><h2>Jueves · Mayo 2026</h2><p>Sesiones 1–4 · Pósters Sesión 1</p></div>
+    </div>
+
+    <div class="session-block">
+      <div class="session-header">
+        <span class="session-time">Sesión 1 · 11:15–12:15h</span>
+        <span class="session-name">Mesas 1–4</span>
+      </div>
+      <div class="mesa-card" data-type="simp" data-day="jue" data-search="berrios pilar leon-perez jose maria ortega-maldonado alberto sinisterra luna salanova marisa organizacional">
+        <div class="mesa-header" onclick="toggleMesa(this)">
+          <div class="mesa-num">1</div>
+          <div class="mesa-meta">
+            <div class="mesa-tags"><span class="tag tag-simp">SIMP</span><span class="tag tag-area">Organizacional</span></div>
+            <div class="mesa-title">Psicología Organizacional Positiva y Liderazgo Positivo (Parte I): Organizaciones saludables</div>
+            <div class="mesa-coord">Coord.: Marisa Salanova (Universitat Jaume I)</div>
+          </div>
+          <div class="mesa-toggle">▼</div>
+        </div>
+        <div class="mesa-body">
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">Berrios</span>, Pilar</div><div class="presenter-title">UJA saludable: evaluación y propuestas de intervención</div></div>
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">Leon-Perez</span>, José María</div><div class="presenter-title">La regulación emocional como determinante del absentismo/presentismo laboral: Un estudio de diario</div></div>
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">Ortega-Maldonado</span>, Alberto</div><div class="presenter-title">Más allá de la autonomía: Mapeo conceptual del bienestar laboral en el trabajo autónomo</div></div>
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">Sinisterra</span>, Luna</div><div class="presenter-title">A positive psychological intervention based on emotional styles to promote well-being in the workplace</div></div>
+        </div>
+      </div>
+
+      <div class="mesa-card" data-type="simp" data-day="jue" data-search="garcia palacios azucena conesa gimenez monica garcia rubio carlos martinez-bacaicoa jone salud mental infanto-juvenil">
+        <div class="mesa-header" onclick="toggleMesa(this)">
+          <div class="mesa-num">2</div>
+          <div class="mesa-meta">
+            <div class="mesa-tags"><span class="tag tag-simp">SIMP</span><span class="tag tag-area">Clínica</span></div>
+            <div class="mesa-title">Nuevas aproximaciones para abordar la salud mental infanto-juvenil</div>
+            <div class="mesa-coord">Coord.: Carlos García Rubio (Universidad Complutense de Madrid)</div>
+          </div>
+          <div class="mesa-toggle">▼</div>
+        </div>
+        <div class="mesa-body">
+          <div class="presenter-row finalist"><div class="presenter-name"><span class="presenter-surname">García Palacios</span>, Azucena</div><div class="presenter-title">Promoción de las competencias emocionales en jóvenes: MyMoodCoach (PREVENT y PROMOTE)</div><div class="finalist-badge">🏆 FINALISTA</div></div>
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">Conesa Giménez</span>, Mónica</div><div class="presenter-title">Diseño y análisis de la usabilidad de una intervención breve basada en una aplicación móvil para la autolesión no suicida: Kalmer</div></div>
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">García Rubio</span>, Carlos</div><div class="presenter-title">Mindfulness en la escuela para mejorar la salud mental en un contexto vulnerable: ensayo controlado aleatorizado</div></div>
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">Martínez-Bacaicoa</span>, Jone</div><div class="presenter-title">Valores éticos y empatía frente al discurso de odio online en jóvenes y adolescentes</div></div>
+        </div>
+      </div>
+
+      <div class="mesa-card" data-type="simp" data-day="jue" data-search="mokhtar galia navarro-siurana jessica sanchez-moreno victor tejada-gallardo claudia blasco belled ana preventiva salud mental">
+        <div class="mesa-header" onclick="toggleMesa(this)">
+          <div class="mesa-num">3</div>
+          <div class="mesa-meta">
+            <div class="mesa-tags"><span class="tag tag-simp">SIMP</span><span class="tag tag-area">Social / Educativa</span></div>
+            <div class="mesa-title">Actuaciones psicológicas como herramienta preventiva en el abordaje de la salud mental</div>
+            <div class="mesa-coord">Coord.: Ana Blasco Belled (Universitat Politècnica de València)</div>
+          </div>
+          <div class="mesa-toggle">▼</div>
+        </div>
+        <div class="mesa-body">
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">Mokhtar</span>, Galia</div><div class="presenter-title">Más allá de la integración: las relaciones sociales como clave preventiva de la vulnerabilidad psicológica</div></div>
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">Navarro-Siurana</span>, Jessica</div><div class="presenter-title">Análisis cualitativo de las experiencias de participantes con enfermedad crónica en un programa de psicología positiva</div></div>
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">Sánchez-Moreno</span>, Víctor</div><div class="presenter-title">Prevención de la ciberagresión adolescente: evaluación de una intervención basada en procesos psicológicos positivos</div></div>
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">Tejada-Gallardo</span>, Claudia</div><div class="presenter-title">Promoción del bienestar como estrategia preventiva en el contexto escolar: el papel de las fortalezas</div></div>
+        </div>
+      </div>
+
+      <div class="mesa-card" data-type="com" data-day="jue" data-search="gassent balaguer ricardo hernandez onrubia emilia privado zamorano jesus martinez cantera cecilia artes expresion creativa">
+        <div class="mesa-header" onclick="toggleMesa(this)">
+          <div class="mesa-num">4</div>
+          <div class="mesa-meta">
+            <div class="mesa-tags"><span class="tag tag-com">COM</span><span class="tag tag-area">Educativa / Básica</span></div>
+            <div class="mesa-title">Artes, expresión creativa, movimiento y bienestar en contextos educativos y culturales</div>
+            <div class="mesa-coord">Coord.: Cecilia Martínez Cantera (Universidad Autónoma de Madrid)</div>
+          </div>
+          <div class="mesa-toggle">▼</div>
+        </div>
+        <div class="mesa-body">
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">Gassent Balaguer</span>, Ricardo</div><div class="presenter-title">Práctica instrumental basada en mindfulness: un estudio piloto de su eficacia sobre el rendimiento musical</div></div>
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">Hernández Onrubia</span>, Emilia</div><div class="presenter-title">Movimiento escénico en el conservatorio profesional de música: una propuesta de intervención educativa</div></div>
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">Privado Zamorano</span>, Jesús</div><div class="presenter-title">La inteligencia, la personalidad y el bienestar como predictores del rendimiento académico</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="session-block">
+      <div class="session-header">
+        <span class="session-time">Sesión 2 · 13:00–14:00h</span>
+        <span class="session-name">Mesas 5–9</span>
+      </div>
+
+      <div class="mesa-card" data-type="com" data-day="jue" data-search="maldonado-martinez jose martin fernandez jaime soler carmen merhi auar richard salanova liderazgo organizacional">
+        <div class="mesa-header" onclick="toggleMesa(this)">
+          <div class="mesa-num">5</div>
+          <div class="mesa-meta">
+            <div class="mesa-tags"><span class="tag tag-com">COM</span><span class="tag tag-area">Organizacional</span></div>
+            <div class="mesa-title">Liderazgo, innovación organizacional y bienestar en el trabajo: modelos y aplicaciones</div>
+            <div class="mesa-coord">Coord.: Marisa Salanova (Universitat Jaume I)</div>
+          </div>
+          <div class="mesa-toggle">▼</div>
+        </div>
+        <div class="mesa-body">
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">Maldonado-Martínez</span>, José A.</div><div class="presenter-title">Liderazgo Engaging, Satisfacción con el Manejo del Talento y Engagement: Un estudio transversal</div></div>
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">Martín Fernández</span>, Jaime</div><div class="presenter-title">I need a HERO, but with experience!: generatividad y bienestar en el modelo HERO</div></div>
+          <div class="presenter-row finalist"><div class="presenter-name"><span class="presenter-surname">Soler</span>, Carmen</div><div class="presenter-title">Fortalezas y bienestar en la movilidad internacional femenina: desarrollo profesional y personal</div><div class="finalist-badge">🏆 FINALISTA</div></div>
+          <div class="presenter-row finalist"><div class="presenter-name"><span class="presenter-surname">Soler</span>, Carmen</div><div class="presenter-title">Liderazgo y bienestar organizacional en instituciones educativas privadas: diseño de un plan estratégico desde la Psicología Positiva</div><div class="finalist-badge">🏆 FINALISTA</div></div>
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">Merhi Auar</span>, Richard</div><div class="presenter-title">Cuando la industria cuida: organizaciones saludables desde el modelo HERO</div></div>
+        </div>
+      </div>
+
+      <div class="mesa-card" data-type="simp" data-day="jue" data-search="gandia-abellan helena garrido-salcedo maria monterde noelia ocana alba sotillo maria discapacidad intelectual">
+        <div class="mesa-header" onclick="toggleMesa(this)">
+          <div class="mesa-num">6</div>
+          <div class="mesa-meta">
+            <div class="mesa-tags"><span class="tag tag-simp">SIMP</span><span class="tag tag-area">Educativa</span></div>
+            <div class="mesa-title">Psicología positiva en colectivos con discapacidad intelectual y del desarrollo</div>
+            <div class="mesa-coord">Coord.: Maria Sotillo (Universidad Autónoma de Madrid)</div>
+          </div>
+          <div class="mesa-toggle">▼</div>
+        </div>
+        <div class="mesa-body">
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">Gandía-Abellán</span>, Helena</div><div class="presenter-title">Factores psicosociales y personales asociados al bienestar emocional en profesionales de la discapacidad</div></div>
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">Garrido-Salcedo</span>, María</div><div class="presenter-title">Bienestar emocional y factores protectores en niños, niñas y adolescentes con hermanos/as con autismo</div></div>
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">Monterde</span>, Noelia</div><div class="presenter-title">Cuando recordar transforma: eficacia de ReViSEP+ en personas mayores con discapacidad intelectual</div></div>
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">Ocaña</span>, Alba</div><div class="presenter-title">Los efectos de las intervenciones basadas en mindfulness en personas con Trastorno del Espectro Autista</div></div>
+        </div>
+      </div>
+
+      <div class="mesa-card" data-type="simp" data-day="jue" data-search="hidalgo leire malonda iris rios diana rubio-escobar enrique hervas gonzalo sentido vital clinica">
+        <div class="mesa-header" onclick="toggleMesa(this)">
+          <div class="mesa-num">7</div>
+          <div class="mesa-meta">
+            <div class="mesa-tags"><span class="tag tag-simp">SIMP</span><span class="tag tag-area">Clínica / Salud</span></div>
+            <div class="mesa-title">Procesos clave en la (re)construcción del sentido vital: evidencia clínica y aplicada</div>
+            <div class="mesa-coord">Coord.: Gonzalo Hervás (Universidad Complutense de Madrid)</div>
+          </div>
+          <div class="mesa-toggle">▼</div>
+        </div>
+        <div class="mesa-body">
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">Hidalgo</span>, Leire</div><div class="presenter-title">Aplicación de la Psicoterapia Basada en el Sentido a pacientes con dolor crónico</div></div>
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">Malonda</span>, Iris</div><div class="presenter-title">Aplicación de la psicoterapia basada en el sentido en personas diagnosticadas con un trastorno mental grave</div></div>
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">Rios</span>, Diana</div><div class="presenter-title">Mecanismos de cambio en intervenciones basadas en sentido vital: Evidencia de un ensayo clínico</div></div>
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">Rubio-Escobar</span>, Enrique</div><div class="presenter-title">De la abstinencia al bienestar: cuándo y cómo se recupera la salud psicológica tras una adicción</div></div>
+        </div>
+      </div>
+
+      <div class="mesa-card" data-type="simp" data-day="jue" data-search="cebollero salinas gonzalez gomez ana basterra-gonzalez aranzazu del rey rosario sanchez-moreno victor rey lourdes tecnologia bienestar infanto-juvenil">
+        <div class="mesa-header" onclick="toggleMesa(this)">
+          <div class="mesa-num">8</div>
+          <div class="mesa-meta">
+            <div class="mesa-tags"><span class="tag tag-simp">SIMP</span><span class="tag tag-area">Educativa / Clínica / Salud</span></div>
+            <div class="mesa-title">Tecnología y bienestar psicológico en población infanto-juvenil: aportes e iniciativas innovadoras</div>
+            <div class="mesa-coord">Coord.: Lourdes Rey (Universidad de Málaga)</div>
+          </div>
+          <div class="mesa-toggle">▼</div>
+        </div>
+        <div class="mesa-body">
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">Cebollero / González</span>, Ana y Ana</div><div class="presenter-title">El modelo e-com: Una propuesta de competencias socioemocionales para analizar el bienestar digital</div></div>
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">Basterra-González</span>, Aránzazu</div><div class="presenter-title">Prevención de riesgos disfuncionales de Internet en la adolescencia: programa de intervención</div></div>
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">del Rey</span>, Rosario</div><div class="presenter-title">Más allá del tiempo de conexión: el papel del uso seguro de Internet y la resiliencia</div></div>
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">Sánchez-Moreno</span>, Víctor</div><div class="presenter-title">De las redes al descanso: Cómo el sueño explica la relación entre uso problemático de Internet y bienestar</div></div>
+        </div>
+      </div>
+
+      <div class="mesa-card" data-type="com" data-day="jue" data-search="fandos carbonell gisela medina navarro dani miragall montilla marta rosales dominguez ana perez reales jesus burychka diana imagen corporal adolescencia">
+        <div class="mesa-header" onclick="toggleMesa(this)">
+          <div class="mesa-num">9</div>
+          <div class="mesa-meta">
+            <div class="mesa-tags"><span class="tag tag-com">COM</span><span class="tag tag-area">Educativa / Clínica</span></div>
+            <div class="mesa-title">Imagen corporal, corporeización positiva y bienestar en la adolescencia</div>
+            <div class="mesa-coord">Coord.: Diana Burychka (Universitat de València)</div>
+          </div>
+          <div class="mesa-toggle">▼</div>
+        </div>
+        <div class="mesa-body">
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">Fandos Carbonell</span>, Gisela</div><div class="presenter-title">La flexibilidad en imagen corporal: un factor protector frente a sintomatología alimentaria</div></div>
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">Medina Navarro</span>, Dani</div><div class="presenter-title">La corporeización positiva (embodiment) en la adolescencia: imagen corporal y bienestar</div></div>
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">Miragall Montilla</span>, Marta</div><div class="presenter-title">El papel del embodiment en el bienestar y la psicopatología alimentaria en mujeres jóvenes</div></div>
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">Rosales Domínguez</span>, Ana</div><div class="presenter-title">Cómo se valoran las emociones positivas: creencias emocionales y malestar psicológico en adolescentes</div></div>
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">Pérez Reales</span>, Jesús Adrián</div><div class="presenter-title">La ingesta emocional en adolescentes a través de los sistemas psicológicos: una revisión de alcance y metaanálisis</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="session-block">
+      <div class="session-header">
+        <span class="session-time">Sesión 3 · 15:30–16:30h</span>
+        <span class="session-name">Mesas 10–14</span>
+      </div>
+
+      <div class="mesa-card" data-type="simp" data-day="jue" data-search="gomez-becerra inmaculada miragall marta sanchezi alvaro sarrion pedro banos rosa tecnologias realidad virtual">
+        <div class="mesa-header" onclick="toggleMesa(this)">
+          <div class="mesa-num">10</div>
+          <div class="mesa-meta">
+            <div class="mesa-tags"><span class="tag tag-simp">SIMP</span><span class="tag tag-area">Clínica / Básica</span></div>
+            <div class="mesa-title">Psicología Positiva y Nuevas Tecnologías: realidad virtual, microintervenciones digitales y sesgos positivos</div>
+            <div class="mesa-coord">Coord.: Rosa Baños (Universitat de València / I-Psi-Tec)</div>
+          </div>
+          <div class="mesa-toggle">▼</div>
+        </div>
+        <div class="mesa-body">
+          <div class="presenter-row finalist"><div class="presenter-name"><span class="presenter-surname">Gómez-Becerra</span>, Inmaculada</div><div class="presenter-title">Promoción del bienestar emocional y las fortalezas psicológicas en infancia y adolescencia con enfermedades crónicas mediante realidad virtual</div><div class="finalist-badge">🏆 FINALISTA</div></div>
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">Miragall</span>, Marta</div><div class="presenter-title">Una micro-intervención en realidad virtual para promover una imagen corporal positiva en mujeres</div></div>
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">Sánchez</span>, Álvaro</div><div class="presenter-title">Entrenamiento en Sesgos Positivos y Bienestar Emocional: Efectos del OCAT sobre la interpretación y la adaptación al estrés</div></div>
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">Sarrión</span>, Pedro</div><div class="presenter-title">Activando procesos psicológicos positivos en el Trastorno Límite de la Personalidad (TPL) mediante nuevas tecnologías</div></div>
+        </div>
+      </div>
+
+      <div class="mesa-card" data-type="simp" data-day="jue" data-search="nombela elisa provencio maria salgado gloria vega-sanz maria chaves covadonga salud mental perinatal">
+        <div class="mesa-header" onclick="toggleMesa(this)">
+          <div class="mesa-num">11</div>
+          <div class="mesa-meta">
+            <div class="mesa-tags"><span class="tag tag-simp">SIMP</span><span class="tag tag-area">Clínica / Salud</span></div>
+            <div class="mesa-title">Hacia la promoción de la salud mental positiva en la etapa perinatal</div>
+            <div class="mesa-coord">Coord.: Covadonga Chaves (Universidad Complutense de Madrid)</div>
+          </div>
+          <div class="mesa-toggle">▼</div>
+        </div>
+        <div class="mesa-body">
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">Nombela</span>, Elisa</div><div class="presenter-title">Análisis de redes para identificar dianas terapéuticas diferenciales en depresión perinatal</div></div>
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">Provencio</span>, Maria</div><div class="presenter-title">Entornos digitales y bienestar emocional en la etapa perinatal: la regulación emocional como mediador</div></div>
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">Salgado</span>, Gloria</div><div class="presenter-title">Ansiedad en el postparto y procesamiento atencional de caras emocionales: resultados preliminares</div></div>
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">Vega-Sanz</span>, Maria</div><div class="presenter-title">Perfiles de vulnerabilidad y resiliencia psicológica en la transición a la maternidad</div></div>
+        </div>
+      </div>
+
+      <div class="mesa-card" data-type="com" data-day="jue" data-search="colombo desiree gutierrez hernandez gonzalo sanchez-hernandez oscar martin palacios natalia lopez-gomez irene bienestar fortalezas regulacion emocional">
+        <div class="mesa-header" onclick="toggleMesa(this)">
+          <div class="mesa-num">12</div>
+          <div class="mesa-meta">
+            <div class="mesa-tags"><span class="tag tag-com">COM</span><span class="tag tag-area">Salud</span></div>
+            <div class="mesa-title">Bienestar, fortalezas y regulación emocional en adultos: evidencia empírica y aplicaciones</div>
+            <div class="mesa-coord">Coord.: Irene López-Gómez (Universidad Complutense de Madrid)</div>
+          </div>
+          <div class="mesa-toggle">▼</div>
+        </div>
+        <div class="mesa-body">
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">Colombo</span>, Desiree</div><div class="presenter-title">El papel de la autoeficacia y los síntomas depresivos en la regulación de las emociones en adultos mayores</div></div>
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">Gutiérrez Hernández</span>, Gonzalo</div><div class="presenter-title">Estrategias cognitivas de regulación emocional en psicólogos/as: Un estudio cualitativo</div></div>
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">Sánchez-Hernández</span>, Óscar</div><div class="presenter-title">Eficacia de una intervención basada en la promoción de la fortaleza del amor como hábito</div></div>
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">Martín Palacios</span>, Natalia</div><div class="presenter-title">Influencia de la percepción del propio atractivo físico en la satisfacción con las relaciones de pareja</div></div>
+        </div>
+      </div>
+
+      <div class="mesa-card" data-type="com" data-day="jue" data-search="martin palacios natalia lledo rando carmen gonzalez abaurrea eider martin-garcia oscar de rivas sara relaciones interpersonales atractivo fisico autocompasion">
+        <div class="mesa-header" onclick="toggleMesa(this)">
+          <div class="mesa-num">13</div>
+          <div class="mesa-meta">
+            <div class="mesa-tags"><span class="tag tag-com">COM</span><span class="tag tag-area">Social</span></div>
+            <div class="mesa-title">Relaciones interpersonales, atractivo físico, autocompasión y bienestar psicosocial</div>
+            <div class="mesa-coord">Coord.: Sara de Rivas (Universidad Rey Juan Carlos)</div>
+          </div>
+          <div class="mesa-toggle">▼</div>
+        </div>
+        <div class="mesa-body">
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">Martín Palacios</span>, Natalia</div><div class="presenter-title">Atractivo físico y bienestar subjetivo en las relaciones de pareja</div></div>
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">Lledó Rando</span>, Carmen</div><div class="presenter-title">Superando el obstáculo de la sobreidentificación: Una propuesta de mejora para la escala de Autocompasión</div></div>
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">González Abaurrea</span>, Eider</div><div class="presenter-title">Autocompasión como recurso psicológico: asociaciones directas e indirectas con el bienestar emocional</div></div>
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">Martin-Garcia</span>, Oscar</div><div class="presenter-title">De la atención a la regulación: un modelo longitudinal de sesgos cognitivos y regulación emocional en usuarios de prácticas contemplativas</div></div>
+        </div>
+      </div>
+
+      <div class="mesa-card" data-type="simp" data-day="jue" data-search="canete manuel andre maria paula ortiz vazquez antonio romero noelia guerrero-ramirez veronica soler carmen organizaciones alimentario">
+        <div class="mesa-header" onclick="toggleMesa(this)">
+          <div class="mesa-num">14</div>
+          <div class="mesa-meta">
+            <div class="mesa-tags"><span class="tag tag-simp">SIMP</span><span class="tag tag-area">Organizacional</span></div>
+            <div class="mesa-title">Nutrir desde dentro: Psicología Positiva aplicada a la cultura, el liderazgo y el bienestar en organizaciones</div>
+            <div class="mesa-coord">Coord.: Carmen Soler (Universitat Jaume I)</div>
+          </div>
+          <div class="mesa-toggle">▼</div>
+        </div>
+        <div class="mesa-body">
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">Cañete</span>, Manuel</div><div class="presenter-title">De la Prevención de Riesgos Laborales al Bienestar Organizacional — Empresa: COVAP</div></div>
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">André / Ortiz Vázquez</span>, María Paula / Antonio</div><div class="presenter-title">Cultura organizacional en entornos industriales — Empresa: Familia Martinez</div></div>
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">Romero / Guerrero-Ramírez</span></div><div class="presenter-title">Liderazgo positivo como palanca cultural — Empresa: COVIRAN</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="session-block">
+      <div class="session-header">
+        <span class="session-time">Sesión 4 · 17:15–18:15h</span>
+        <span class="session-name">Mesas 15–18</span>
+      </div>
+
+      <div class="mesa-card" data-type="simp" data-day="jue" data-search="cortes-denia daniel de la cruz moreno gemma el ghoudani karima palacios-pedrero noah cruz valeria pulido manuel liderazgo positivo bienestar laboral">
+        <div class="mesa-header" onclick="toggleMesa(this)">
+          <div class="mesa-num">15</div>
+          <div class="mesa-meta">
+            <div class="mesa-tags"><span class="tag tag-simp">SIMP</span><span class="tag tag-area">Organizacional</span></div>
+            <div class="mesa-title">Liderazgo positivo y bienestar laboral: Estudios multimétodo y claves para la intervención</div>
+            <div class="mesa-coord">Coord.: Manuel Pulido (Universidad de Jaén)</div>
+          </div>
+          <div class="mesa-toggle">▼</div>
+        </div>
+        <div class="mesa-body">
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">Cortés-Denia</span>, Daniel</div><div class="presenter-title">Fluctuaciones diarias del bienestar: Cómo el liderazgo transformacional energiza a los empleados</div></div>
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">de la Cruz Moreno</span>, Gemma</div><div class="presenter-title">Más allá de la autoridad: liderazgo de base segura en la Guardia Civil</div></div>
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">El Ghoudani</span>, Karima</div><div class="presenter-title">El síndrome de burnout docente: entre liderazgo y competencias psicoemocionales</div></div>
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">Palacios-Pedrero</span>, Noah</div><div class="presenter-title">El liderazgo transformacional previene la falta de motivación mediante la creación de desafíos</div></div>
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">Cruz</span>, Valeria</div><div class="presenter-title">Cuando liderar es acompañar: ¿cómo estructurar una intervención desde el enfoque positivo?</div></div>
+        </div>
+      </div>
+
+      <div class="mesa-card" data-type="com" data-day="jue" data-search="aguilar-luzon maria del carmen gallardo garcia pablo gavilán domingo pablo mendoza-llanos rodolfo de rivas sara bienestar social prosocial felicidad">
+        <div class="mesa-header" onclick="toggleMesa(this)">
+          <div class="mesa-num">16</div>
+          <div class="mesa-meta">
+            <div class="mesa-tags"><span class="tag tag-com">COM</span><span class="tag tag-area">Social</span></div>
+            <div class="mesa-title">Bienestar social, comportamiento prosocial y factores sociales de la felicidad</div>
+            <div class="mesa-coord">Coord.: Sara de Rivas (Universidad Rey Juan Carlos)</div>
+          </div>
+          <div class="mesa-toggle">▼</div>
+        </div>
+        <div class="mesa-body">
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">Aguilar-Luzón</span>, Mª del Carmen</div><div class="presenter-title">Efectos restaurativos de los paisajes sonoros urbanos y su relación con el bienestar</div></div>
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">Gallardo García</span>, Pablo Jesús</div><div class="presenter-title">El progreso social como mediador entre la democracia y la felicidad</div></div>
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">Gavilán Domingo</span>, Pablo</div><div class="presenter-title">Predictores interculturales de la acción pro bono en estudiantes europeos</div></div>
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">Mendoza-Llanos</span>, Rodolfo</div><div class="presenter-title">Del déficit al flourishing: satisfactores estables y macrorecursos como plataforma del bienestar sostenido</div></div>
+        </div>
+      </div>
+
+      <div class="mesa-card" data-type="simp" data-day="jue" data-search="arizu onassis alejandra ochoa-arnedo cristian ruiz-romeo marina jimenez diaz alba ochoa cristian vinculos terapeuticos">
+        <div class="mesa-header" onclick="toggleMesa(this)">
+          <div class="mesa-num">17</div>
+          <div class="mesa-meta">
+            <div class="mesa-tags"><span class="tag tag-simp">SIMP</span><span class="tag tag-area">Clínica / Salud</span></div>
+            <div class="mesa-title">Vínculos terapéuticos positivos en lo presencial y digital: alianza, cohesión y empoderamiento</div>
+            <div class="mesa-coord">Coord.: Cristian Ochoa (Universidad de Barcelona)</div>
+          </div>
+          <div class="mesa-toggle">▼</div>
+        </div>
+        <div class="mesa-body">
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">Arizu Onassis</span>, Alejandra</div><div class="presenter-title">El efecto de la Cohesión Grupal sobre los resultados de la psicoterapia online en cáncer</div></div>
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">Ochoa-Arnedo</span>, Cristian</div><div class="presenter-title">Alianza terapéutica en una intervención psicosocial digital escalonada para pacientes oncológicos</div></div>
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">Ruiz-Romeo</span>, Marina</div><div class="presenter-title">Empoderamiento en mujeres con cáncer de mama a través de una comunidad de salud digital</div></div>
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">Jiménez Díaz</span>, Alba</div><div class="presenter-title">Co-diseño y evaluación de una intervención digital de salud mental para mejorar el bienestar de jóvenes</div></div>
+        </div>
+      </div>
+
+      <div class="mesa-card" data-type="com" data-day="jue" data-search="de la muela folgado pedro galgo bendito javier quero castellano soledad hernandez martinez carmen pereira monica resiliencia trauma clinica">
+        <div class="mesa-header" onclick="toggleMesa(this)">
+          <div class="mesa-num">18</div>
+          <div class="mesa-meta">
+            <div class="mesa-tags"><span class="tag tag-com">COM</span><span class="tag tag-area">Clínica</span></div>
+            <div class="mesa-title">Resiliencia, trauma y recursos psicológicos en contextos clínicos</div>
+            <div class="mesa-coord">Coord.: Mónica Pereira (COPM)</div>
+          </div>
+          <div class="mesa-toggle">▼</div>
+        </div>
+        <div class="mesa-body">
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">de la Muela Folgado</span>, Pedro</div><div class="presenter-title">Descifrando los elementos de la resiliencia sostenida ante un evento potencialmente traumático</div></div>
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">Galgo Bendito</span>, Javier</div><div class="presenter-title">Un protocolo integral de tercera generación para sintomatología post-traumática</div></div>
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">Quero Castellano</span>, Soledad</div><div class="presenter-title">El sentido en la vida y el crecimiento postraumático como variables predictoras del bienestar</div></div>
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">Hernández Martínez</span>, Carmen</div><div class="presenter-title">BienGestar: una intervención digital para promover el bienestar emocional durante la gestación</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- POSTERS SESSION 1 -->
+    <div class="poster-section" id="poster-sec-1" data-type="poster" data-day="jue">
+      <div class="poster-session-header">
+        <span>📋</span>
+        <h3>Sesión 1 de Pósters</h3>
+        <span class="poster-time">Jueves 14 mayo · 12:30–13:00h</span>
+      </div>
+      <div class="poster-card" data-search="alhambra gema cejudo javier luna pablo rodriguez-donaire alba competencias socioemocionales infancia"><div class="poster-num">1</div><div><div class="poster-authors">Alhambra, Gema; Cejudo, Javier; Luna, Pablo; Rodríguez-Donaire, Alba</div><div class="poster-title">Mejora de las competencias socioemocionales en la infancia</div></div></div>
+      <div class="poster-card" data-search="arvelo gonzalez carla extremera natalio docentes alumnado inteligencia emocional"><div class="poster-num">2</div><div><div class="poster-authors">Arvelo González, Carla; Extremera, Natalio</div><div class="poster-title">Cuando docentes y alumnado vibran en la misma sintonía: el papel interactivo de la inteligencia emocional</div></div></div>
+      <div class="poster-card" data-search="canals sans josefa voltas moreso nuria flores benitez cristina rojo marticella meritxell severino fanero silvia regule-em-i competencias emocionales"><div class="poster-num">3</div><div><div class="poster-authors">Canals Sans, Josefa; Voltas Moreso, Núria; Flores Benítez, Cristina; Rojo Marticella, Meritxell; Severino Fanero, Sílvia</div><div class="poster-title">Eficacia percibida por el profesorado del programa REGULE-EM-I para el desarrollo de competencias emocionales en educación infantil</div></div></div>
+      <div class="poster-card" data-search="cortina jarque laia llorens gumbau susana salanova soria marisa liderazgo inclusivo intervencion"><div class="poster-num">4</div><div><div class="poster-authors">Cortina Jarque, Laia; Llorens Gumbau, Susana; Salanova Soria, Marisa</div><div class="poster-title">Diseño de una Intervención Psicológica Positiva para el desarrollo del liderazgo inclusivo</div></div></div>
+      <div class="poster-card" data-search="cortina jarque laia llorens gumbau susana salanova soria marisa i5cer bienestar ceramico"><div class="poster-num">5</div><div><div class="poster-authors">Cortina Jarque, Laia; Llorens Gumbau, Susana; Salanova Soria, Marisa</div><div class="poster-title">I5CER: Desarrollo de recursos para la promoción del bienestar psicosocial en el sector cerámico</div></div></div>
+      <div class="poster-card" data-search="da silva sousa sheila gomez-carbajo laura hervas torres gonzalo rodriguez-carvajal raquel aceptacion reevaluacion cognitiva regulacion emocional"><div class="poster-num">6</div><div><div class="poster-authors">Da Silva Sousa, Sheila; Gómez-Carbajo, Laura; Hervás Torres, Gonzalo; Rodríguez-Carvajal, Raquel</div><div class="poster-title">Aceptación y reevaluación cognitiva: el impacto de su secuencia en la regulación emocional</div></div></div>
+      <div class="poster-card" data-search="diaz-moreno adrian muro anna cladellas ramon healthyminded ensenanza aprendizaje digital"><div class="poster-num">7</div><div><div class="poster-authors">Díaz-Moreno, Adrián; Muro, Anna; Cladellas, Ramón</div><div class="poster-title">HealthyMindED: Enseñanza y aprendizaje digital saludable en la educación superior</div></div></div>
+      <div class="poster-card" data-search="el ghoudani karima cortes-denia daniel agusto-landa jose zarhbouch benaissa lopez-zafra esther ramos alvarez manuel liderazgo transformacional marruecos"><div class="poster-num">8</div><div><div class="poster-authors">El Ghoudani, Karima; Cortés-Denia, Daniel; Agusto-Landa, Jose María; et al.</div><div class="poster-title">Liderazgo transformacional en contextos educativos: un estudio de la estructura factorial del MLQ-5X en Marruecos</div></div></div>
+      <div class="poster-card" data-search="gil-beltran ester cozzo-cabrera giannella cruz-ortiz valeria martinez-martinez isabel coaching liderazgo transformacional"><div class="poster-num">9</div><div><div class="poster-authors">Gil-Beltrán, Ester; Cozzo-Cabrera, Giannella; Cruz-Ortiz, Valeria; Martinez-Martinez, Isabel</div><div class="poster-title">Desarrollo del liderazgo transformacional y auténtico mediante una intervención de coaching psicológico positivo</div></div></div>
+      <div class="poster-card" data-search="gomez laura gil caridad da silva sheila gaubeka asier hervas gonzalo rodriguez-carvajal raquel creencias metacognitivas bienestar"><div class="poster-num">10</div><div><div class="poster-authors">Gómez, Laura; Gil, Caridad; da Silva, Sheila; Hervás, Gonzalo; Rodríguez-Carvajal, Raquel</div><div class="poster-title">Creencias metacognitivas y su impacto en el bienestar</div></div></div>
+      <div class="poster-card" data-search="gonzalez-abaurrea eider galan-luque teresa gonzalez-cabrera joaquin machimbarrena juan escortell-sanchez raquel metacognicion dolor mental resiliencia victimizacion"><div class="poster-num">11</div><div><div class="poster-authors">González-Abaurrea, Eider; Galán-Luque, Teresa; González-Cabrera, Joaquín Manuel; Machimbarrena, Juan Manuel; Escortell-Sánchez, Raquel</div><div class="poster-title">Metacognición y dolor mental en víctimas de victimización entre iguales: el papel de la resiliencia</div></div></div>
+      <div class="poster-card" data-search="gonzalez-abaurrea eider machimbarrena juan gonzalez-cabrera joaquin galan-luque teresa ortega-baron jessica autocompasion mentalizacion victimizacion"><div class="poster-num">12</div><div><div class="poster-authors">González-Abaurrea, Eider; Machimbarrena, Juan Manuel; González-Cabrera, Joaquín Manuel; et al.</div><div class="poster-title">Autocompasión y mentalización en los roles de victimización entre iguales: diferencias entre el contexto presencial y online</div></div></div>
+      <div class="poster-card" data-search="leon-parada maria dolores leon-moreno celeste jimenez teresa benitez-castro miguel testigos acoso escolar adolescentes dibujos"><div class="poster-num">13</div><div><div class="poster-authors">León-Parada, María Dolores; León-Moreno, Celeste Marcela; Jiménez, Teresa; Benítez-Castro, Miguel Ángel</div><div class="poster-title">Testigos del acoso escolar: ¿Intervenir o permanecer en silencio? Lo que nos cuentan los adolescentes a través de sus dibujos</div></div></div>
+      <div class="poster-card" data-search="montoya-castilla inmaculada valero-moreno selene martin-avila javier rodriguez-jimenez esther perez-marin marian fortalezas psicologicas adolescentes enfermedad cronica calidad vida"><div class="poster-num">14</div><div><div class="poster-authors">Montoya-Castilla, Inmaculada; Valero-Moreno, Selene; Martín-Avila, Javier; et al.</div><div class="poster-title">Fortalezas psicológicas y bienestar en adolescentes con enfermedad física crónica: un modelo predictivo de la calidad de vida</div></div></div>
+      <div class="poster-card" data-search="moreno albalat maria isabel sanchez jimenez virginia rodriguez de arriba maria luisa desarrollo emocional sociomoral adolescentes acoso sexual"><div class="poster-num">15</div><div><div class="poster-authors">Moreno Albalat, María Isabel; Sánchez Jiménez, Virginia; Rodríguez de Arriba, María Luisa</div><div class="poster-title">Desarrollo emocional y sociomoral de los adolescentes y su relación con la interpretación social del acoso sexual</div></div></div>
+      <div class="poster-card" data-search="muro anna diaz adrian cladellas ramon grado psicologia competencias emocionales bienestar tecnicas psicologia positiva"><div class="poster-num">16</div><div><div class="poster-authors">Muro, Anna; Díaz, Adrián; Cladellas, Ramon</div><div class="poster-title">Hacia el aprendizaje activo en el grado en Psicología: Resultados de un programa formativo en competencias emocionales y promoción del bienestar</div></div></div>
+      <div class="poster-card" data-search="pinto-delacadena pablo vinueza-cabezas andrea bourgeat-salazar mikaela unda-lopez alejandro fortalezas caracter recursos humanos"><div class="poster-num">17</div><div><div class="poster-authors">Pinto-DelaCadena, Pablo A.; Vinueza-Cabezas, Andrea; Bourgeat-Salazar, Mikaela; Unda-López, Alejandro</div><div class="poster-title">Incorporando las fortalezas del carácter en las prácticas de recursos humanos: una revisión de alcance</div></div></div>
+      <div class="poster-card" data-search="robles-bello maria auxiliadora salamanca-camargo yenny competencias interculturales interprofesionales migrantes coil"><div class="poster-num">18</div><div><div class="poster-authors">Robles-Bello, María Auxiliadora; Salamanca-Camargo, Yenny</div><div class="poster-title">Desarrollo de competencias interculturales e interprofesionales en la atención a colectivos migrantes mediante COIL</div></div></div>
+      <div class="poster-card" data-search="rodriguez de arriba maria luisa herrera solarte luisa sanchez jimenez virginia identidad moral calidad relaciones sentimentales adolescente"><div class="poster-num">19</div><div><div class="poster-authors">Rodríguez de Arriba, María Luisa; Herrera Solarte, Luisa; Sánchez Jiménez, Virginia</div><div class="poster-title">¿La identidad moral impacta en la calidad de las relaciones sentimentales? Un estudio con población adolescente</div></div></div>
+      <div class="poster-card" data-search="toledano noemi calvo alba ortega-ruiz rosario viejo carmen experiencia afectiva autopercepcion social bienestar adolescencia"><div class="poster-num">20</div><div><div class="poster-authors">Toledano, Noemí; Calvo, Alba; Ortega-Ruiz, Rosario; Viejo, Carmen</div><div class="poster-title">Experiencia afectiva, autopercepción social y bienestar en la adolescencia: un modelo de ecuación estructural</div></div></div>
+      <div class="poster-card" data-search="navarro-montoya irina sanchez-sanchez hugo schoeps konstanze valero-moreno selene autoconciencia satisfaccion escolar autoconcepto academico"><div class="poster-num">21</div><div><div class="poster-authors">Navarro-Montoya, Irina; Sanchez-Sanchez, Hugo; Schoeps, Konstanze; Valero-Moreno, Selene</div><div class="poster-title">Autoconciencia y satisfacción escolar: el papel mediador de las actitudes positivas, el disfrute y el autoconcepto académico</div></div></div>
+      <div class="poster-card" data-search="vinueza-cabezas andrea meneghel isabella fortalezas caracter engagement sentido proposito laboral quito ecuador"><div class="poster-num">22</div><div><div class="poster-authors">Vinueza-Cabezas, Andrea; Meneghel, Isabella</div><div class="poster-title">Intervención breve basada en fortalezas de carácter para mejorar el engagement y el sentido de propósito laboral</div></div></div>
+    </div>
+  </div>
+
+  <!-- VIERNES 15 -->
+  <div class="day-block" id="day-vie" data-day="vie">
+    <div class="day-header">
+      <div class="day-number">15</div>
+      <div class="day-info"><h2>Viernes · Mayo 2026</h2><p>Sesiones 5–8 · Pósters Sesión 2</p></div>
+    </div>
+
+    <div class="session-block">
+      <div class="session-header">
+        <span class="session-time">Sesión 5 · 9:00–10:00h</span>
+        <span class="session-name">Mesas 19–22</span>
+      </div>
+
+      <div class="mesa-card" data-type="simp" data-day="vie" data-search="bueno ines gassent ricardo marco josep munar enric sanchez eva vazquez carmelo artes psicologia bienestar">
+        <div class="mesa-header" onclick="toggleMesa(this)">
+          <div class="mesa-num">19</div>
+          <div class="mesa-meta">
+            <div class="mesa-tags"><span class="tag tag-simp">SIMP</span><span class="tag tag-area">Salud / Neurociencias</span></div>
+            <div class="mesa-title">Artes y Psicología: Un diálogo con la ciencia del bienestar</div>
+            <div class="mesa-coord">Coord.: Carmelo Vázquez (Universidad Complutense de Madrid)</div>
+          </div>
+          <div class="mesa-toggle">▼</div>
+        </div>
+        <div class="mesa-body">
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">Bueno</span>, Inés</div><div class="presenter-title">Expresión artística y cuidado en salud mental en estudiantes universitarios</div></div>
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">Gassent</span>, Ricardo</div><div class="presenter-title">Reeducando la mirada hacia el asombro: La práctica de las artes escénicas como herramienta terapéutica</div></div>
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">Marco</span>, Josep</div><div class="presenter-title">Buena onda: el placer musical y su relación con el bienestar</div></div>
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">Munar</span>, Enric</div><div class="presenter-title">Neuroestética de la Arquitectura</div></div>
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">Sánchez</span>, Eva</div><div class="presenter-title">Desplegando el movimiento creativo: danza, tecnología inercial y flexibilidad cognitiva</div></div>
+        </div>
+      </div>
+
+      <div class="mesa-card" data-type="simp" data-day="vie" data-search="dominguez-clave elisabet duenas herrero rosa maria monteagudo-romero laura lecuona oscar garcia rubio carlos psicodelicos salud mental">
+        <div class="mesa-header" onclick="toggleMesa(this)">
+          <div class="mesa-num">20</div>
+          <div class="mesa-meta">
+            <div class="mesa-tags"><span class="tag tag-simp">SIMP</span><span class="tag tag-area">Clínica</span></div>
+            <div class="mesa-title">El encuentro de los psicodélicos con la salud mental: evidencia, clínica y crecimiento psicológico</div>
+            <div class="mesa-coord">Coord.: Oscar Lecuona / Carlos García Rubio (UCM)</div>
+          </div>
+          <div class="mesa-toggle">▼</div>
+        </div>
+        <div class="mesa-body">
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">Domínguez-Clavé</span>, Elisabet</div><div class="presenter-title">Uso psicodélico con orientación clínica informal y crecimiento psicológico: una investigación cualitativa</div></div>
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">Dueñas Herrero</span>, Rosa María</div><div class="presenter-title">¿De qué hablamos cuando hablamos de Terapia Asistida con Psicodélicos?</div></div>
+          <div class="presenter-row finalist"><div class="presenter-name"><span class="presenter-surname">Dueñas Herrero</span>, Rosa María</div><div class="presenter-title">Resultados de Eficacia y Seguridad del Uso del 5-MeO-DMT en Pacientes con Trastorno Depresivo Mayor</div><div class="finalist-badge">🏆 FINALISTA</div></div>
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">Monteagudo-Romero</span>, Laura</div><div class="presenter-title">Chiric sanango como mediador de procesos de reorganización psicoemocional</div></div>
+        </div>
+      </div>
+
+      <div class="mesa-card" data-type="com" data-day="vie" data-search="cendejas torres paloma leon moreno celeste villa henao daniela de carlos bujan andrea quintana orts cirenia programas intervencion psicologia positiva centros educativos">
+        <div class="mesa-header" onclick="toggleMesa(this)">
+          <div class="mesa-num">21</div>
+          <div class="mesa-meta">
+            <div class="mesa-tags"><span class="tag tag-com">COM</span><span class="tag tag-area">Educativa</span></div>
+            <div class="mesa-title">Programas e intervenciones de Psicología Positiva en centros educativos: prevención y bienestar escolar</div>
+            <div class="mesa-coord">Coord.: Cirenia Luz Quintana Orts (Universidad de Málaga)</div>
+          </div>
+          <div class="mesa-toggle">▼</div>
+        </div>
+        <div class="mesa-body">
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">Cendejas Torres</span>, Paloma</div><div class="presenter-title">Una propuesta piloto para la asignatura 'Educación en Valores Cívicos y Éticos'</div></div>
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">León Moreno</span>, Celeste Marcela</div><div class="presenter-title">Perdón y reparación en el aula: la mirada de los futuros docentes ante el (ciber) acoso</div></div>
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">Villa Henao</span>, Daniela</div><div class="presenter-title">El pensamiento abstracto como recurso protector para el bienestar subjetivo adolescente</div></div>
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">Villa-Henao</span>, Daniela</div><div class="presenter-title">La voz de adolescentes y familias sobre el sexting: estrategias de protección y educación</div></div>
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">de Carlos Buján</span>, Andrea</div><div class="presenter-title">El humor como herramienta de autorregulación y desarrollo socioemocional en Educación Primaria</div></div>
+        </div>
+      </div>
+
+      <div class="mesa-card" data-type="com" data-day="vie" data-search="acuna-hormazabal alvaro maureira meneses sebastian sinisterra llorens luna jover martinez alberto bienestar recursos psicologicos trabajo capital psicologico engagement">
+        <div class="mesa-header" onclick="toggleMesa(this)">
+          <div class="mesa-num">22</div>
+          <div class="mesa-meta">
+            <div class="mesa-tags"><span class="tag tag-com">COM</span><span class="tag tag-area">Organizacional</span></div>
+            <div class="mesa-title">Bienestar y recursos psicológicos en el trabajo: capital psicológico, engagement y vocación</div>
+            <div class="mesa-coord">Coord.: Alberto Jover Martínez (Universitat de Valencia)</div>
+          </div>
+          <div class="mesa-toggle">▼</div>
+        </div>
+        <div class="mesa-body">
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">Acuña-Hormazabal</span>, Alvaro</div><div class="presenter-title">¿Puede la vocación sostener lo insostenible? El rol mediador de la vocación en el burnout</div></div>
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">Maureira Meneses</span>, Sebastián</div><div class="presenter-title">Más allá de las demandas: seguridad, soporte y conciliación como claves del bienestar en salud</div></div>
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">Sinisterra Llorens</span>, Luna</div><div class="presenter-title">Multidomain Engagement Profiles: A Person-Centered Study of Work, Organization, and Life Engagement</div></div>
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">Jover Martínez</span>, Alberto</div><div class="presenter-title">No todos conectamos igual: un análisis comparativo de redes individuales de compasión y conexión</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="session-block">
+      <div class="session-header">
+        <span class="session-time">Sesión 6 · 11:15–12:15h</span>
+        <span class="session-name">Mesas 23–27</span>
+      </div>
+
+      <div class="mesa-card" data-type="simp" data-day="vie" data-search="contreras alba garcia felipe sarrion pedro sanz sandra vazquez carmelo intervenciones positivas breves clinica">
+        <div class="mesa-header" onclick="toggleMesa(this)">
+          <div class="mesa-num">23</div>
+          <div class="mesa-meta">
+            <div class="mesa-tags"><span class="tag tag-simp">SIMP</span><span class="tag tag-area">Clínica</span></div>
+            <div class="mesa-title">Intervenciones positivas clínicas breves y ultrabreves: evidencia y nuevos desarrollos</div>
+            <div class="mesa-coord">Coord.: Carmelo Vázquez (Universidad Complutense de Madrid)</div>
+          </div>
+          <div class="mesa-toggle">▼</div>
+        </div>
+        <div class="mesa-body">
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">Contreras</span>, Alba</div><div class="presenter-title">Más allá del malestar: intervención breve positiva para trauma, daño moral y bienestar en personal psicosanitario</div></div>
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">García</span>, Felipe</div><div class="presenter-title">Intervenciones breves en situaciones de alto estrés: Un estudio comparativo de Terapia Sistémica Breve, Mindfulness Breve y TCC Positiva</div></div>
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">Sarrión</span>, Pedro</div><div class="presenter-title">Promoción de la salud mental en jóvenes universitarios mediante microintervenciones digitales basadas en valores</div></div>
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">Sanz</span>, Sandra</div><div class="presenter-title">Más allá del malestar: intervención breve positiva para trauma, daño moral y bienestar en personal psicosanitario</div></div>
+        </div>
+      </div>
+
+      <div class="mesa-card" data-type="simp" data-day="vie" data-search="huguet rosello anna espinosa fernandez lourdes gomez becerra inmaculada jimenez vazquez david soto sanz victoria espinosa lourdes salud mental jovenes adolescentes">
+        <div class="mesa-header" onclick="toggleMesa(this)">
+          <div class="mesa-num">24</div>
+          <div class="mesa-meta">
+            <div class="mesa-tags"><span class="tag tag-simp">SIMP</span><span class="tag tag-area">Salud</span></div>
+            <div class="mesa-title">Alfabetizando y previniendo en Salud Mental en Jóvenes y Adolescentes: Iniciativas Exitosas</div>
+            <div class="mesa-coord">Coord.: Lourdes Espinosa Fernández (Universidad de Jaén)</div>
+          </div>
+          <div class="mesa-toggle">▼</div>
+        </div>
+        <div class="mesa-body">
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">Huguet Roselló</span>, Anna</div><div class="presenter-title">Implementación de un programa cognitivo-conductual autoadministrado vía Internet: El programa VIVIM</div></div>
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">Espinosa Fernández</span>, Lourdes</div><div class="presenter-title">Alfabetizando en salud mental y bienestar emocional en adolescentes y jóvenes: Recursos DIGITAS</div></div>
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">Gómez Becerra</span>, Inmaculada</div><div class="presenter-title">Intervención basada en el juego para la mejora de la regulación emocional en infancia: 'La Isla de SaEm'</div></div>
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">Jiménez Vázquez</span>, David</div><div class="presenter-title">WebPROCARE+. Programa de prevención Transdiagnóstica para adolescentes en riesgo emocional</div></div>
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">Soto Sanz</span>, Victoria</div><div class="presenter-title">Efectos de una intervención breve basada en covitalidad sobre el bienestar emocional y competencias socioemocionales del profesorado</div></div>
+        </div>
+      </div>
+
+      <div class="mesa-card" data-type="simp" data-day="vie" data-search="chiquito-lazo efren mirica robert diaz bretones francisco ventura mercedes salanova marisa liderazgo positivo parte ii">
+        <div class="mesa-header" onclick="toggleMesa(this)">
+          <div class="mesa-num">25</div>
+          <div class="mesa-meta">
+            <div class="mesa-tags"><span class="tag tag-simp">SIMP</span><span class="tag tag-area">Organizacional</span></div>
+            <div class="mesa-title">Psicología Organizacional Positiva y Liderazgo Positivo (Parte II): Liderazgo Positivo</div>
+            <div class="mesa-coord">Coord.: Marisa Salanova (Universitat Jaume I)</div>
+          </div>
+          <div class="mesa-toggle">▼</div>
+        </div>
+        <div class="mesa-body">
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">Chiquito-Lazo</span>, Efrén</div><div class="presenter-title">Apoyo del líder y capital psicológico compartido: interacción transnivel en equipos de trabajo</div></div>
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">Mirica</span>, Robert</div><div class="presenter-title">El impacto del liderazgo inclusivo en el bienestar y el desempeño: Un meta-análisis</div></div>
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">Díaz Bretones</span>, Francisco</div><div class="presenter-title">Cuando liderar con autenticidad importa: efectos del liderazgo auténtico sobre el bienestar del equipo</div></div>
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">Ventura</span>, Mercedes</div><div class="presenter-title">Tejiendo bienestar con DEI: Intervención del Survey Feedback Apreciativo con equipos</div></div>
+        </div>
+      </div>
+
+      <div class="mesa-card" data-type="simp" data-day="vie" data-search="diaz dario gandarillas beatriz leon rubio jose maria stavraki maria persuasion cambio actitudes psicologicos metacognitivos">
+        <div class="mesa-header" onclick="toggleMesa(this)">
+          <div class="mesa-num">26</div>
+          <div class="mesa-meta">
+            <div class="mesa-tags"><span class="tag tag-simp">SIMP</span><span class="tag tag-area">Social</span></div>
+            <div class="mesa-title">Persuasión y cambio de actitudes: procesos psicológicos positivos y mecanismos metacognitivos</div>
+            <div class="mesa-coord">Coord.: Beatriz Gandarillas (Universidad Autónoma de Madrid)</div>
+          </div>
+          <div class="mesa-toggle">▼</div>
+        </div>
+        <div class="mesa-body">
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">Díaz</span>, Darío</div><div class="presenter-title">Analizando la dimensionalidad de las actitudes hacia el propio cuerpo: El papel de la metacognición</div></div>
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">Gandarillas</span>, Beatriz</div><div class="presenter-title">La influencia de los estilos de apego en el cambio de actitudes a través de mensajes persuasivos</div></div>
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">León Rubio</span>, Jose María</div><div class="presenter-title">Incremento de la confianza en los propios pensamientos como mecanismo de cambio de actitudes</div></div>
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">Stavraki</span>, Maria</div><div class="presenter-title">El efecto paradójico de la curiosidad sobre el procesamiento de la información persuasiva</div></div>
+        </div>
+      </div>
+
+      <div class="mesa-card" data-type="com" data-day="vie" data-search="solano nunez marina hernandez martinez carmen chaves velez covadonga rubio-escobar enrique chaves covadonga bienestar salud cronicidad gestacion dolor">
+        <div class="mesa-header" onclick="toggleMesa(this)">
+          <div class="mesa-num">27</div>
+          <div class="mesa-meta">
+            <div class="mesa-tags"><span class="tag tag-com">COM</span><span class="tag tag-area">Salud</span></div>
+            <div class="mesa-title">Bienestar y salud en cronicidad, gestación y dolor: intervenciones positivas multimodales</div>
+            <div class="mesa-coord">Coord.: Covadonga Chaves (Universidad Complutense de Madrid)</div>
+          </div>
+          <div class="mesa-toggle">▼</div>
+        </div>
+        <div class="mesa-body">
+          <div class="presenter-row finalist"><div class="presenter-name"><span class="presenter-surname">Solano Núñez</span>, Marina</div><div class="presenter-title">Propuesta de intervención bi-modal en fibromialgia y su impacto en los síntomas de sensibilización central</div><div class="finalist-badge">🏆 FINALISTA</div></div>
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">Hernández Martínez</span>, Carmen</div><div class="presenter-title">Bienestar materno durante la gestación y neurodesarrollo temprano del bebé: un estudio de cohorte prospectivo</div></div>
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">Chaves Vélez</span>, Covadonga</div><div class="presenter-title">Crecimiento postraumático en duelo perinatal: Factores protectores y guía de recomendaciones</div></div>
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">Rubio-Escobar</span>, Enrique</div><div class="presenter-title">Fortalezas, valores y bienestar eudaimónico en la recuperación a largo plazo del consumo de alcohol</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="session-block">
+      <div class="session-header">
+        <span class="session-time">Sesión 7 · 13:00–14:00h</span>
+        <span class="session-name">Mesas 28–32</span>
+      </div>
+
+      <div class="mesa-card" data-type="simp" data-day="vie" data-search="moreno albalat maria isabel rodriguez de arriba maria luisa toledano noemi viejo carmen viejo carmen bienestar relaciones sentimentales adolescencia educativo">
+        <div class="mesa-header" onclick="toggleMesa(this)">
+          <div class="mesa-num">28</div>
+          <div class="mesa-meta">
+            <div class="mesa-tags"><span class="tag tag-simp">SIMP</span><span class="tag tag-area">Salud / Metodología</span></div>
+            <div class="mesa-title">Promoción del bienestar y las relaciones sentimentales de calidad en la adolescencia desde el contexto educativo</div>
+            <div class="mesa-coord">Coord.: Carmen Viejo (Universidad de Córdoba)</div>
+          </div>
+          <div class="mesa-toggle">▼</div>
+        </div>
+        <div class="mesa-body">
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">Moreno Albalat</span>, Maria Isabel</div><div class="presenter-title">El programa BE-WELL para el desarrollo positivo en la adolescencia: Análisis de datos preliminares</div></div>
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">Rodriguez de Arriba</span>, Maria Luisa</div><div class="presenter-title">Evaluación de la eficacia del programa BE-WELL para el desarrollo positivo en la adolescencia</div></div>
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">Toledano</span>, Noemí</div><div class="presenter-title">Competencia afectiva en la adolescencia: definición y validación de un modelo teórico</div></div>
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">Viejo</span>, Carmen</div><div class="presenter-title">Resultados preliminares del programa COSCO: hacia la construcción de pareja saludable</div></div>
+        </div>
+      </div>
+
+      <div class="mesa-card" data-type="com" data-day="vie" data-search="cano alcala nerea gomez hombrados jorge luque-reca octavio mateos perez estibaliz cerezo rusillo maria teresa rey pena lourdes ciberacoso tecnologia jovenes">
+        <div class="mesa-header" onclick="toggleMesa(this)">
+          <div class="mesa-num">29</div>
+          <div class="mesa-meta">
+            <div class="mesa-tags"><span class="tag tag-com">COM</span><span class="tag tag-area">Social / Educativa</span></div>
+            <div class="mesa-title">Ciberacoso, uso problemático de tecnología y bienestar psicológico en jóvenes</div>
+            <div class="mesa-coord">Coord.: Lourdes Rey Peña (Universidad de Málaga)</div>
+          </div>
+          <div class="mesa-toggle">▼</div>
+        </div>
+        <div class="mesa-body">
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">Cano Alcalá</span>, Nerea</div><div class="presenter-title">Estudio de recursos psicológicos positivos e indicadores de salud mental asociados a la adicción a los videojuegos</div></div>
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">Gómez Hombrados</span>, Jorge</div><div class="presenter-title">Probabilidad de intervención ante el ciberacoso en docentes de educación secundaria</div></div>
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">Luque-Reca</span>, Octavio</div><div class="presenter-title">Uso problemático de smartphone y malestar psicológico en jóvenes: ¿marcan la diferencia los recursos positivos?</div></div>
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">Mateos Pérez</span>, Estibaliz</div><div class="presenter-title">Resiliencia como factor protector frente al discurso de odio online en adolescentes</div></div>
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">Cerezo Rusillo</span>, María Teresa</div><div class="presenter-title">Parentalidad positiva y uso de TIC en la adolescencia</div></div>
+        </div>
+      </div>
+
+      <div class="mesa-card" data-type="simp" data-day="vie" data-search="contreras alba de rivas sara diaz-silveira cynthia franco-gil irene diaz-silveira cynthia emergencia climatica agencia ecoansiedad proambiental">
+        <div class="mesa-header" onclick="toggleMesa(this)">
+          <div class="mesa-num">30</div>
+          <div class="mesa-meta">
+            <div class="mesa-tags"><span class="tag tag-simp">SIMP</span><span class="tag tag-area">Social</span></div>
+            <div class="mesa-title">Psicología Positiva en tiempos de Emergencia Climática: agencia, ecoansiedad y conducta proambiental</div>
+            <div class="mesa-coord">Coord.: Cynthia Díaz-Silveira (Universidad Rey Juan Carlos)</div>
+          </div>
+          <div class="mesa-toggle">▼</div>
+        </div>
+        <div class="mesa-body">
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">Contreras</span>, Alba</div><div class="presenter-title">Abordaje del bienestar ante la crisis climática desde la psicología positiva</div></div>
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">de Rivas</span>, Sara</div><div class="presenter-title">Mindfulness y sostenibilidad ambiental: Estado del arte, propuesta de mecanismos e implicaciones</div></div>
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">Díaz-Silveira</span>, Cynthia</div><div class="presenter-title">Agencia climática y comportamiento proambiental: el papel diferencial de la autoeficacia y la identidad</div></div>
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">Franco-Gil</span>, Irene</div><div class="presenter-title">Ecoansiedad, juventud y futuro: retos psicológicos y bienestar ante la crisis climática</div></div>
+        </div>
+      </div>
+
+      <div class="mesa-card" data-type="com" data-day="vie" data-search="espinosa lopez regina salazar ortego marta sanchez-moreno victor burgos-del toro odette cruz valeria burnout dano moral bienestar profesionales salud">
+        <div class="mesa-header" onclick="toggleMesa(this)">
+          <div class="mesa-num">31</div>
+          <div class="mesa-meta">
+            <div class="mesa-tags"><span class="tag tag-com">COM</span><span class="tag tag-area">Clínica / Organizacional</span></div>
+            <div class="mesa-title">Burnout, daño moral y bienestar en profesionales de la salud y de la ayuda</div>
+            <div class="mesa-coord">Coord.: Valeria Cruz (Universitat Jaume I)</div>
+          </div>
+          <div class="mesa-toggle">▼</div>
+        </div>
+        <div class="mesa-body">
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">Espinosa López</span>, Regina</div><div class="presenter-title">Cuando cuidar duele: el impacto del daño moral en el bienestar del personal sanitario</div></div>
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">Salazar Ortego</span>, Marta</div><div class="presenter-title">Promover el bienestar emocional y laboral en profesionales del autismo: mindfulness y compasión</div></div>
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">Sánchez-Moreno</span>, Víctor</div><div class="presenter-title">El impacto del insomnio en la gratitud: un modelo de mediación a través del afecto positivo y negativo</div></div>
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">Burgos-Del Toro</span>, Odette</div><div class="presenter-title">Estudio de caso: Beneficios de establecer un programa contra la violencia en una organización hospitalaria</div></div>
+        </div>
+      </div>
+
+      <div class="mesa-card" data-type="com" data-day="vie" data-search="navarro siurana jessica rubio escobar enrique de la muela folgado pedro lledo rando carmen solano nunez marina navarro jessica practicas contemplativas psicoterapia positiva">
+        <div class="mesa-header" onclick="toggleMesa(this)">
+          <div class="mesa-num">32</div>
+          <div class="mesa-meta">
+            <div class="mesa-tags"><span class="tag tag-com">COM</span><span class="tag tag-area">Clínica</span></div>
+            <div class="mesa-title">Prácticas contemplativas, psicoterapia positiva e intervenciones clínicas breves: evidencia y mecanismos</div>
+            <div class="mesa-coord">Coord.: Jéssica Navarro (Universitat de Valencia)</div>
+          </div>
+          <div class="mesa-toggle">▼</div>
+        </div>
+        <div class="mesa-body">
+          <div class="presenter-row finalist"><div class="presenter-name"><span class="presenter-surname">Navarro Siurana</span>, Jéssica</div><div class="presenter-title">Entrenamiento en Bienestar basado en prácticas Contemplativas (EBC) en adultos con diabetes tipo 2</div><div class="finalist-badge">🏆 FINALISTA</div></div>
+          <div class="presenter-row finalist"><div class="presenter-name"><span class="presenter-surname">Rubio Escobar</span>, Enrique</div><div class="presenter-title">Intervención de psicología positiva hedónica en la recuperación temprana de la depresión mayor</div><div class="finalist-badge">🏆 FINALISTA</div></div>
+          <div class="presenter-row finalist"><div class="presenter-name"><span class="presenter-surname">de la Muela Folgado</span>, Pedro</div><div class="presenter-title">Intervenciones de Sesión Única digitales para la depresión en jóvenes: Un viaje por el pasado, el presente y el futuro</div><div class="finalist-badge">🏆 FINALISTA</div></div>
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">Lledó Rando</span>, Carmen</div><div class="presenter-title">Eficacia de una intervención psicoeducativa grupal basada en autocompasión para mejorar la calidad de cuidadores</div></div>
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">Solano Núñez</span>, Marina</div><div class="presenter-title">Proyecto e-MOTIDOLOR: Intervención positiva bimodal y multidisciplinar para fomentar factores resilientes en pacientes con dolor crónico</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="session-block">
+      <div class="session-header">
+        <span class="session-time">Sesión 8 · 17:15–18:15h</span>
+        <span class="session-name">Mesas 33–36</span>
+      </div>
+
+      <div class="mesa-card" data-type="com" data-day="vie" data-search="lecuona de la cruz oscar cataluna dafne diez blanco saray peinado vanesa valdes cavazos sara lecuona oscar avances teoricos metodologicos psicologia positiva medicion">
+        <div class="mesa-header" onclick="toggleMesa(this)">
+          <div class="mesa-num">33</div>
+          <div class="mesa-meta">
+            <div class="mesa-tags"><span class="tag tag-com">COM</span><span class="tag tag-area">Metodología / Básica</span></div>
+            <div class="mesa-title">Avances teóricos y metodológicos en Psicología Positiva: medición, meta-análisis e integridad científica</div>
+            <div class="mesa-coord">Coord.: Oscar Lecuona (Universidad Complutense de Madrid)</div>
+          </div>
+          <div class="mesa-toggle">▼</div>
+        </div>
+        <div class="mesa-body">
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">Lecuona de la Cruz</span>, Oscar</div><div class="presenter-title">Credibilidad o barbarie: Cómo empoderar a la Psicología Positiva y superar la crisis de replicación</div></div>
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">Cataluña</span>, Dafne</div><div class="presenter-title">Rol del uso equilibrado de las fortalezas sobre bienestar y malestar psicológico</div></div>
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">Díez Blanco</span>, Saray</div><div class="presenter-title">Resiliencia y bienestar eudaimónico en adultos: análisis longitudinal mediante modelos lineales mixtos</div></div>
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">Peinado</span>, Vanesa</div><div class="presenter-title">¿Resiliencia o resiliencias? El bienestar en Europa ante crisis económicas y sanitarias</div></div>
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">Valdés Cavazos</span>, Sara</div><div class="presenter-title">Medición de la Equivalencia a Nivel de Constructo Entre Lenguas</div></div>
+        </div>
+      </div>
+
+      <div class="mesa-card" data-type="com" data-day="vie" data-search="merida lopez sergio vargas ovilo maria cristina bueno pascual ines yudes gomez carolina bienestar estudiantil intervenciones digitales tecnologia adolescentes">
+        <div class="mesa-header" onclick="toggleMesa(this)">
+          <div class="mesa-num">34</div>
+          <div class="mesa-meta">
+            <div class="mesa-tags"><span class="tag tag-com">COM</span><span class="tag tag-area">Salud / Educativa</span></div>
+            <div class="mesa-title">Bienestar estudiantil, intervenciones digitales y tecnología positiva para adolescentes y jóvenes</div>
+            <div class="mesa-coord">Coord.: Carolina Yudes Gómez (Universidad de Málaga)</div>
+          </div>
+          <div class="mesa-toggle">▼</div>
+        </div>
+        <div class="mesa-body">
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">Mérida López</span>, Sergio</div><div class="presenter-title">¿Cambiar el prisma o pasar página? El impacto emocional del afrontamiento en conflictos universitarios</div></div>
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">Vargas Óvilo</span>, María Cristina</div><div class="presenter-title">'Hoy no me puedo levantar': un análisis prospectivo sobre regulación emocional en universitarios</div></div>
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">Bueno Pascual</span>, Inés</div><div class="presenter-title">¿Afecta el estado de salud mental de los adultos jóvenes a sus preferencias en intervenciones digitales?</div></div>
+        </div>
+      </div>
+
+      <div class="mesa-card" data-type="com" data-day="vie" data-search="merino rivera m dolores verhamme carmena lola moreno-jimenez jennifer linares de marcos jon martinez cantera cecilia envejecimiento saludable longevidad bienestar adultos mayores">
+        <div class="mesa-header" onclick="toggleMesa(this)">
+          <div class="mesa-num">35</div>
+          <div class="mesa-meta">
+            <div class="mesa-tags"><span class="tag tag-com">COM</span><span class="tag tag-area">Salud</span></div>
+            <div class="mesa-title">Envejecimiento saludable, longevidad y bienestar en adultos mayores y poblaciones con diversidad funcional</div>
+            <div class="mesa-coord">Coord.: Cecilia Martínez Cantera (Universidad Autónoma de Madrid)</div>
+          </div>
+          <div class="mesa-toggle">▼</div>
+        </div>
+        <div class="mesa-body">
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">Merino Rivera</span>, M. Dolores</div><div class="presenter-title">La Personalidad Centenaria Positiva como predictora de longevidad saludable</div></div>
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">Verhamme Carmena</span>, Lola</div><div class="presenter-title">Más allá del envejecimiento: intervención en Psicología Positiva para mejorar el bienestar</div></div>
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">Moreno-Jiménez</span>, Jennifer</div><div class="presenter-title">Estudio de perfiles basados en la pasión por el trabajo y las experiencias de recuperación</div></div>
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">Liñares de Marcos</span>, Jon</div><div class="presenter-title">Un enfoque integrador entre las perspectivas de la neurodiversidad y los modelos de bienestar</div></div>
+        </div>
+      </div>
+
+      <div class="mesa-card" data-type="com" data-day="vie" data-search="ayala-cruz jose daniel diaz pincheira francisco fuentes-ferrada reiner lopez crespo javier merhi richard emprendimiento deporte talento organizacional innovacion">
+        <div class="mesa-header" onclick="toggleMesa(this)">
+          <div class="mesa-num">36</div>
+          <div class="mesa-meta">
+            <div class="mesa-tags"><span class="tag tag-com">COM</span><span class="tag tag-area">Organizacional</span></div>
+            <div class="mesa-title">Emprendimiento, deporte, talento organizacional e innovación en Psicología Positiva aplicada</div>
+            <div class="mesa-coord">Coord.: Richard Merhi (Universitat Jaume I)</div>
+          </div>
+          <div class="mesa-toggle">▼</div>
+        </div>
+        <div class="mesa-body">
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">Ayala-Cruz</span>, José Daniel</div><div class="presenter-title">El Impacto de Intervenciones Psicológicas Positivas en el Desempeño de Atletas de Alto Nivel</div></div>
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">Diaz Pincheira</span>, Francisco</div><div class="presenter-title">Recursos psicológicos positivos y felicidad subjetiva en emprendedores de España</div></div>
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">Fuentes-Ferrada</span>, Reiner</div><div class="presenter-title">Machine Learning para Bienestar Organizacional: una Integración Multimodal de Datos</div></div>
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">López Crespo</span>, Javier</div><div class="presenter-title">Naturaleza y Aplicaciones del Playful Work Design: Una Revisión Sistemática</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- POSTERS SESSION 2 -->
+    <div class="poster-section" id="poster-sec-2" data-type="poster" data-day="vie">
+      <div class="poster-session-header">
+        <span>📋</span>
+        <h3>Sesión 2 de Pósters</h3>
+        <span class="poster-time">Viernes 15 mayo · 12:30–13:00h</span>
+      </div>
+      <div class="poster-card" data-search="artes sergio fernandez-buendía sara gomez-fernandez lucia quero soledad prevalencia trastorno adaptacion"><div class="poster-num">1</div><div><div class="poster-authors">Artes, Sergio; Fernández-Buendía, Sara; Gómez-Fernández, Lucía Victoria; Quero, Soledad</div><div class="poster-title">Datos preliminares sobre prevalencia y factores asociados al trastorno de adaptación en grupo de riesgo</div></div></div>
+      <div class="poster-card" data-search="augusto landa jose maria checa domene lara gavin chocano oscar bienestar psicologico inteligencia emocional burnout academico universitarios"><div class="poster-num">2</div><div><div class="poster-authors">Augusto Landa, José María; Checa Domene, Lara; Gavín Chocano, Oscar</div><div class="poster-title">El rol mediador del Bienestar Psicológico en la relación entre la Inteligencia Emocional y el Burnout académico</div></div></div>
+      <div class="poster-card" data-search="bajo miriam barahona helena stavraki maria diaz dario discapacidad percibida esclerosis multiple calidad vida"><div class="poster-num">3</div><div><div class="poster-authors">Bajo, Miriam; Barahona, Helena; Stavraki, Maria; Díaz, Darío</div><div class="poster-title">El papel que juega la discapacidad percibida en la relación entre los síntomas de la esclerosis múltiple y su impacto en la calidad de vida</div></div></div>
+      <div class="poster-card" data-search="cebollero salinas ana garcia martin irene inteligencia colectiva entornos educativos digitales desarrollo socioemocional"><div class="poster-num">4</div><div><div class="poster-authors">Cebollero Salinas, Ana; García Martín, Irene</div><div class="poster-title">Inteligencia Colectiva en entornos educativos digitales: desarrollo socioemocional y prevención de riesgos psicosociales</div></div></div>
+      <div class="poster-card" data-search="colombini giulia cuerpo redes sociales armonia tecnologica congruencia ideales corporales entornos digitales"><div class="poster-num">5</div><div><div class="poster-authors">Colombini, Giulia</div><div class="poster-title">Entre cuerpo, redes sociales y armonía tecnológica: cómo la congruencia y la exposición a ideales corporales en línea pueden moldear el uso de los entornos digitales</div></div></div>
+      <div class="poster-card" data-search="garcia-moya irene diez marta villegas flora jimenez-alvarez ana estres academico universitarias"><div class="poster-num">6</div><div><div class="poster-authors">García-Moya, Irene; Díez, Marta; Villegas, Flora; Jiménez-Álvarez, Ana</div><div class="poster-title">Claves para gestionar los niveles de estrés académico en estudiantes universitarias</div></div></div>
+      <div class="poster-card" data-search="godino-cruz jesus diez-blanco saray martin-maria natalia lara elvira olaya beatriz domenech-abella joan haro josep miret marta gete-alejandro ingrid ayuso-mateos jose bienestar discapacidad adultos"><div class="poster-num">7</div><div><div class="poster-authors">Godino-Cruz, Jesús; Díez-Blanco, Saray; Martín-María, Natalia; et al.</div><div class="poster-title">Relación entre los componentes del bienestar y la discapacidad en adultos</div></div></div>
+      <div class="poster-card" data-search="isequilla-alarcon estela bullying ciberbullying diversidad funcional inclusion educativa"><div class="poster-num">8</div><div><div class="poster-authors">Isequilla-Alarcón, Estela</div><div class="poster-title">Cómo afecta el bullying y el ciberbullying a las personas con diversidad funcional: una aproximación a la inclusión educativa</div></div></div>
+      <div class="poster-card" data-search="jimenez-iglesias antonia paniagua carmen jimenez-alvarez ana villegas flora coordinacion bienestar proteccion alumnado secundaria"><div class="poster-num">9</div><div><div class="poster-authors">Jiménez-Iglesias, Antonia; Paniagua, Carmen; Jiménez-Álvarez, Ana; Villegas, Flora</div><div class="poster-title">Conocimiento y uso de la figura de coordinación de bienestar y protección por el alumnado de secundaria</div></div></div>
+      <div class="poster-card" data-search="laorden baeza maria blazquez sevilla miguel bravo herrero sandra prieto-merino david aizpun vines ignacio validacion escala funcionamiento mental atam efma"><div class="poster-num">10</div><div><div class="poster-authors">Laorden Baeza, María; Blazquez Sevilla, Miguel Ángel; Bravo Herrero, Sandra; et al.</div><div class="poster-title">Validación de la Escala de Funcionamiento Mental de ATAM (EFMA)</div></div></div>
+      <div class="poster-card" data-search="magan ines fuertes beatriz moreno leire asensio elena delgado ana belen maria montserrat zabolotnya tatiana jurado rosa factores psicologicos genero sindrome coronario agudo"><div class="poster-num">11</div><div><div class="poster-authors">Magán, Inés; Fuertes, Beatriz; Moreno, Leire; Asensio, Elena; et al.</div><div class="poster-title">Factores psicológicos y género en el síndrome coronario agudo: un estudio exploratorio</div></div></div>
+      <div class="poster-card" data-search="montoya-castilla inmaculada valero-moreno selene martin-avila javier rodriguez-jimenez esther perez-marin marian intervencion digital psicologia positiva bienestar adolescente emotihealth"><div class="poster-num">12</div><div><div class="poster-authors">Montoya-Castilla, Inmaculada; Valero-Moreno, Selene; Martín-Avila, Javier; et al.</div><div class="poster-title">Intervención digital basada en psicología positiva para la promoción del bienestar adolescente: el serious game emoTIChealth</div></div></div>
+      <div class="poster-card" data-search="navarro-moreno victor herrero rocio zamora angel miragall marta desdentado lorena banos rosa clever imagen corporal positiva dolor lumbar cronico"><div class="poster-num">13</div><div><div class="poster-authors">Navarro-Moreno, Víctor; Herrero, Rocío; Zamora, Ángel; Miragall, Marta; et al.</div><div class="poster-title">CLEVER, una intervención basada en Imagen Corporal Positiva para el tratamiento del Dolor Lumbar Crónico</div></div></div>
+      <div class="poster-card" data-search="navarro-siurana jessica alvear david rosaleny ramon medina dani olivares sergio cebolla ausias entrenamiento bienestar contemplativas ebc diabetes tipo 2 mixtos"><div class="poster-num">14</div><div><div class="poster-authors">Navarro-Siurana, Jéssica; Alvear, David; Rosaleny, Ramón; Medina, Dani; et al.</div><div class="poster-title">Entrenamiento en Bienestar basado en prácticas Contemplativas (EBC) en adultos con diabetes tipo 2: diseño de serie de casos con métodos mixtos</div></div></div>
+      <div class="poster-card" data-search="pons pablo mira adriana diaz garcia amanda garcia palacios azucena banos rosa intervenciones psicologia positiva prevencion suicidio revision sistematica"><div class="poster-num">15</div><div><div class="poster-authors">Pons, Pablo; Mira, Adriana; Díaz García, Amanda; García Palacios, Azucena; Baños, Rosa María</div><div class="poster-title">Intervenciones basadas en psicología positiva para prevención del suicidio: una revisión sistemática</div></div></div>
+      <div class="poster-card" data-search="robles bello maria auxiliadora valencia naranjo nieves martin puga maria eva factores proteccion riesgos laborales atencion temprana"><div class="poster-num">16</div><div><div class="poster-authors">Robles Bello, María Auxiliadora; Valencia Naranjo, Nieves; Martín Puga, María Eva</div><div class="poster-title">Exploración preliminar de los factores de protección de los riesgos laborales de profesionales de atención temprana</div></div></div>
+      <div class="poster-card" data-search="sanchez-hernandez oscar canales ana optimismo autocuidado profesional psicologia sanitaria clinica"><div class="poster-num">17</div><div><div class="poster-authors">Sánchez-Hernández, Óscar; Canales, Ana</div><div class="poster-title">La relación del optimismo en el autocuidado profesional en una muestra de profesionales de psicología sanitaria y clínica</div></div></div>
+      <div class="poster-card" data-search="santamaria-rincon mireia sarrion pedro martinez-gregorio sara miragall marta banos rosa bienestar valores personales fortalezas psicologicas longitudinal"><div class="poster-num">18</div><div><div class="poster-authors">Santamaria-Rincon, Mireia; Sarrión, Pedro; Martínez-Gregorio, Sara; Miragall, Marta; Baños, Rosa</div><div class="poster-title">Clarificando los mecanismos del bienestar en un estudio longitudinal: el papel de los valores personales y las fortalezas psicológicas</div></div></div>
+      <div class="poster-card" data-search="sarrion pedro santamaria-rincon mireia martinez-gregorio sara cebolla ausias banos rosa valores personales bienestar largo vida"><div class="poster-num">19</div><div><div class="poster-authors">Sarrión, Pedro; Santamaria-Rincon, Mireia; Martínez-Gregorio, Sara; et al.</div><div class="poster-title">¿Cómo cambian los valores personales y su relación con el bienestar a lo largo de la vida?</div></div></div>
+      <div class="poster-card" data-search="sanchez-sanchez hugo navarro-montoya irina hoferichter frances schoeps konstanze valero-moreno selene uso problematico redes sociales bienestar adultos emergentes longitudinal"><div class="poster-num">20</div><div><div class="poster-authors">Sanchez-Sanchez, Hugo; Navarro-Montoya, Irina; Hoferichter, Frances; Schoeps, Konstanze; Valero-Moreno, Selene</div><div class="poster-title">Uso problemático de redes sociales y bienestar en adultos emergentes: evidencia de un modelo longitudinal</div></div></div>
+      <div class="poster-card" data-search="vidal joana andreu catherine fuentes reiner ramon yolanda rivera alma cebolla ausias estados hipo-egoicos oncologia atenuar yo sanar"><div class="poster-num">21</div><div><div class="poster-authors">Vidal, Joana; Andreu, Catherine; Fuentes, Reiner; Ramón, Yolanda; Rivera, Alma; Cebolla, Ausiàs</div><div class="poster-title">Atenuar el yo para sanar: estados hipo-egoicos y relevancia clínica en oncología</div></div></div>
+      <div class="poster-card" data-search="virgos gonzalez myriam munoz conejo irene mecha patricia espinosa fabiola sanchez-lopez alvaro blanco ivan bateria estimulos sesgos cognitivos positivos depresion ansiedad social"><div class="poster-num">22</div><div><div class="poster-authors">Virgós González, Myriam; Muñoz Conejo, Irene; Mecha, Patricia; et al.</div><div class="poster-title">Desarrollo y validación de una batería de estímulos para la evaluación de sesgos cognitivos positivos en depresión y ansiedad social</div></div></div>
+      <div class="poster-card" data-search="zavala-hepp francisca gil-beltran ester cruz-ortiz valeria intervencion online multicomponente psicologia positiva vitalidad subjetiva mujeres"><div class="poster-num">23</div><div><div class="poster-authors">Zavala-Hepp, Francisca; Gil-Beltrán, Ester; Cruz-Ortiz, Valeria</div><div class="poster-title">Efectos de una intervención online multicomponente basada en psicología positiva sobre la vitalidad subjetiva en mujeres adultas</div></div></div>
+      <div class="poster-card" data-search="ziebell de oliveira manoela machado wagner klotz da rosa michele silveira stinieski mariana sousa andreus escala riesgos psicosociales trabajo brasil"><div class="poster-num">24</div><div><div class="poster-authors">Ziebell de Oliveira, Manoela; Machado, Wagner de Lara; et al.</div><div class="poster-title">Desarrollo y Evidencias Iniciales de una Escala Brasileña para Evaluar Riesgos Psicosociales en el Trabajo</div></div></div>
+      <div class="poster-card" data-search="soto sanz victoria bleda cruz maria jesus molina alberola rita lloret molines alejandra covitalidad grupos focales intervencion personas mayores"><div class="poster-num">25</div><div><div class="poster-authors">Soto Sanz, Victoria; Bleda Cruz, Mª Jesús; Molina Alberola, Rita; Lloret Molines, Alejandra</div><div class="poster-title">Análisis cualitativo de grupos focales para el diseño de un programa de intervención basado en la covitalidad en personas mayores</div></div></div>
+      <div class="poster-card" data-search="soto sanz victoria mateu martinez ornela alonso miranda jennifer morales gonzalez ayelen laboratorium e-lab gamificada escape rooms psicoeducativos covitalidad"><div class="poster-num">26</div><div><div class="poster-authors">Soto Sanz, Victoria; Mateu Martínez, Ornela; Alonso Miranda, Jennifer; Morales Gonzalez, Ayelen</div><div class="poster-title">Laboratorium y e-lab: estudio comparativo de la experiencia gamificada en Escape Rooms psicoeducativos sobre Covitalidad</div></div></div>
+    </div>
+  </div>
+
+  <!-- SÁBADO 16 -->
+  <div class="day-block" id="day-sab" data-day="sab">
+    <div class="day-header">
+      <div class="day-number">16</div>
+      <div class="day-info"><h2>Sábado · Mayo 2026</h2><p>Sesiones 9–10 · Clausura</p></div>
+    </div>
+
+    <div class="session-block">
+      <div class="session-header">
+        <span class="session-time">Sesión 9 · 9:45–10:45h</span>
+        <span class="session-name">Mesas 37–39</span>
+      </div>
+
+      <div class="mesa-card" data-type="com" data-day="sab" data-search="bueno pascual ines garcia mayor eva munoz conejo irene cancela ana cancela vallespín ana intervenciones digitales mhealth salud psicologica">
+        <div class="mesa-header" onclick="toggleMesa(this)">
+          <div class="mesa-num">37</div>
+          <div class="mesa-meta">
+            <div class="mesa-tags"><span class="tag tag-com">COM</span><span class="tag tag-area">Salud</span></div>
+            <div class="mesa-title">Intervenciones digitales, mHealth y comportamientos preventivos para la salud psicológica</div>
+            <div class="mesa-coord">Coord.: Ana Cancela Vallespín (Universidad Villanueva)</div>
+          </div>
+          <div class="mesa-toggle">▼</div>
+        </div>
+        <div class="mesa-body">
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">Bueno Pascual</span>, Inés</div><div class="presenter-title">Diseño persuasivo y engagement en intervenciones digitales de psicología positiva</div></div>
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">García Mayor</span>, Eva</div><div class="presenter-title">¿Se puede predecir el abandono y el engagement en intervenciones digitales de salud mental?</div></div>
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">Muñoz Conejo</span>, Irene</div><div class="presenter-title">Sesgos cognitivos positivos y perfiles de salud mental: un análisis centrado en la persona</div></div>
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">Cancela</span>, Ana</div><div class="presenter-title">Efectos del diseño de mensajes preventivos sobre actitudes y activación emocional</div></div>
+        </div>
+      </div>
+
+      <div class="mesa-card" data-type="simp" data-day="sab" data-search="jimenez-iglesias antonia garcia-moya irene del rey rosario garcia moya irene recursos bienestar contextos educativos">
+        <div class="mesa-header" onclick="toggleMesa(this)">
+          <div class="mesa-num">38</div>
+          <div class="mesa-meta">
+            <div class="mesa-tags"><span class="tag tag-simp">SIMP</span><span class="tag tag-area">Educativa</span></div>
+            <div class="mesa-title">Recursos y líneas de actuación clave para la promoción del bienestar en contextos educativos</div>
+            <div class="mesa-coord">Coord.: Irene García Moya (Universidad de Sevilla)</div>
+          </div>
+          <div class="mesa-toggle">▼</div>
+        </div>
+        <div class="mesa-body">
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">Jiménez-Iglesias</span>, Antonia</div><div class="presenter-title">Contexto familiar y estrés escolar: ¿Qué papel tienen las relaciones familiares positivas?</div></div>
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">García-Moya</span>, Irene</div><div class="presenter-title">Necesidades de apoyo identificadas en los coordinadores y coordinadoras de bienestar y protección. Resultados preliminares del proyecto EASE-B</div></div>
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">del Rey</span>, Rosario</div><div class="presenter-title">Mi instituto es un lugar seguro: Estrategias ante la victimización y situaciones de riesgo</div></div>
+        </div>
+      </div>
+
+      <div class="mesa-card" data-type="com" data-day="sab" data-search="carmona cobo isabel lopez rute lorena palomares perez alba parola giulia martinez cantera cecilia flexibilidad psicologica compasion perdon bienestar adultos">
+        <div class="mesa-header" onclick="toggleMesa(this)">
+          <div class="mesa-num">39</div>
+          <div class="mesa-meta">
+            <div class="mesa-tags"><span class="tag tag-com">COM</span><span class="tag tag-area">Social / Clínica</span></div>
+            <div class="mesa-title">Flexibilidad psicológica, compasión, perdón y bienestar en adultos</div>
+            <div class="mesa-coord">Coord.: Cecilia Martínez Cantera (Universidad Autónoma de Madrid)</div>
+          </div>
+          <div class="mesa-toggle">▼</div>
+        </div>
+        <div class="mesa-body">
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">Carmona Cobo</span>, Isabel</div><div class="presenter-title">Vivir después del cáncer de mama: un estudio de diario sobre la flexibilidad psicológica y el bienestar</div></div>
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">López Rute</span>, Lorena</div><div class="presenter-title">Perdonar no basta: rumiación y reevaluación positiva como puentes hacia la paz interior</div></div>
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">Palomares Pérez</span>, Alba</div><div class="presenter-title">Sexismo sutil y salud psicológica: un metaanálisis</div></div>
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">Parola</span>, Giulia</div><div class="presenter-title">¿El afecto positivo beneficia al self? Su papel como posible 'puerta de entrada' al bienestar</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="session-block">
+      <div class="session-header">
+        <span class="session-time">Sesión 10 · 12:15–13:15h</span>
+        <span class="session-name">Mesas 40–42</span>
+      </div>
+
+      <div class="mesa-card" data-type="simp" data-day="sab" data-search="abad anton beatriz brito mireya cebolla i marti ausias fuentes reiner lecuona oscar de rivas sara ciencias contemplativas medicion aplicaciones procesos">
+        <div class="mesa-header" onclick="toggleMesa(this)">
+          <div class="mesa-num">40</div>
+          <div class="mesa-meta">
+            <div class="mesa-tags"><span class="tag tag-simp">SIMP</span><span class="tag tag-area">Clínica / Salud / Básica</span></div>
+            <div class="mesa-title">Avances en Ciencias Contemplativas: Medición, aplicaciones y procesos</div>
+            <div class="mesa-coord">Coord.: Sara de Rivas / Oscar Lecuona (URJC / UCM)</div>
+          </div>
+          <div class="mesa-toggle">▼</div>
+        </div>
+        <div class="mesa-body">
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">Abad Antón</span>, Beatriz</div><div class="presenter-title">¿El vedanā como puerta de entrada al mindfulness? Estudio piloto del programa Deeper Mindfulness</div></div>
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">Brito</span>, Mireya</div><div class="presenter-title">Efectos sobre el descentramiento y la reactividad emocional de la elicitación de estados contemplativos</div></div>
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">Cebolla i Martí</span>, Ausiàs</div><div class="presenter-title">Hacia una comprensión multidimensional de los estados hipo-egoicos inducidos por prácticas contemplativas</div></div>
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">Fuentes</span>, Reiner</div><div class="presenter-title">Intentos de vivir: explorando el rol de la agencia en la participación de conducta suicida simulada en realidad virtual</div></div>
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">Lecuona</span>, Oscar</div><div class="presenter-title">Combinando psicometría y fenomenología para una mejor medición de estados contemplativos</div></div>
+        </div>
+      </div>
+
+      <div class="mesa-card" data-type="com" data-day="sab" data-search="robles bello maria auxiliadora cortes jose andres el ghoudani karima gonzalez gomez ana maria grande jimenez daniel chamizo nieto teresa competencias socioemocionales interculturalidad bienestar adolescencia educacion">
+        <div class="mesa-header" onclick="toggleMesa(this)">
+          <div class="mesa-num">41</div>
+          <div class="mesa-meta">
+            <div class="mesa-tags"><span class="tag tag-com">COM</span><span class="tag tag-area">Educativa</span></div>
+            <div class="mesa-title">Competencias socioemocionales, interculturalidad y bienestar en la adolescencia y la educación</div>
+            <div class="mesa-coord">Coord.: Mª Teresa Chamizo Nieto (Universidad de Málaga)</div>
+          </div>
+          <div class="mesa-toggle">▼</div>
+        </div>
+        <div class="mesa-body">
+          <div class="presenter-row finalist"><div class="presenter-name"><span class="presenter-surname">Robles Bello</span>, María Auxiliadora</div><div class="presenter-title">Desarrollo de competencias interculturales e interprofesionales en la atención a colectivos migrantes</div><div class="finalist-badge">🏆 FINALISTA</div></div>
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">Cortés</span>, José Andrés</div><div class="presenter-title">Sentido de vida, bienestar e intención de abandono en estudiantes de educación superior</div></div>
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">El Ghoudani</span>, Karima</div><div class="presenter-title">Competencias transversales y liderazgo en el aula: ¿qué perfil se está preparando?</div></div>
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">González Gómez</span>, Ana María</div><div class="presenter-title">e-COM como amortiguador del riesgo digital: vulnerabilidad psicosocial, motivación y bienestar</div></div>
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">Grande Jiménez</span>, Daniel</div><div class="presenter-title">La tutoría como espacio para el desarrollo de competencias socioemocionales en el alumnado</div></div>
+        </div>
+      </div>
+
+      <div class="mesa-card" data-type="com" data-day="sab" data-search="pompili tommaso herber eva cancela vallespín ana acuna-hormazabal alvaro ruiz segarra maria isabel pereira monica bienestar psicologico salud organizaciones perspectivas internacionales">
+        <div class="mesa-header" onclick="toggleMesa(this)">
+          <div class="mesa-num">42</div>
+          <div class="mesa-meta">
+            <div class="mesa-tags"><span class="tag tag-com">COM</span><span class="tag tag-area">Salud / Organizacional</span></div>
+            <div class="mesa-title">Bienestar psicológico, salud y organizaciones: perspectivas internacionales y aplicadas</div>
+            <div class="mesa-coord">Coord.: Mónica Pereira (COPM)</div>
+          </div>
+          <div class="mesa-toggle">▼</div>
+        </div>
+        <div class="mesa-body">
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">Pompili</span>, Tommaso</div><div class="presenter-title">Emotional Intelligence: Validation of the Italian Scale for Students</div></div>
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">Herber</span>, Eva</div><div class="presenter-title">Estudio de Bienestar Laboral en Sanidad y Educación en España</div></div>
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">Cancela Vallespín</span>, Ana</div><div class="presenter-title">Motivaciones, modalidad de práctica y calidad de vida en surf y parasurf</div></div>
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">Acuña-Hormazabal</span>, Álvaro</div><div class="presenter-title">¡Aún tenemos esperanza! El rol de los factores organizacionales y el capital psicológico en la calidad de vida laboral</div></div>
+          <div class="presenter-row"><div class="presenter-name"><span class="presenter-surname">Ruiz Segarra</span>, María Isabel</div><div class="presenter-title">Efectividad de una intervención breve basada en psicología positiva para promover el bienestar psicológico en estudiantes de educación superior</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="no-results" id="noResults">
+    <div style="font-size:2rem">🔍</div>
+    <p>No se encontraron resultados para tu búsqueda.</p>
+  </div>
+
+</main>
+
+<footer>
+  <p>VII Congreso de Psicología Positiva · SEPP · Málaga 2026 · <a href="https://www.seppsicologiapositiva.es" style="color:var(--accent)">seppsicologiapositiva.es</a></p>
+</footer>
+
+<script>
+  let activeDay = 'all';
+  let activeType = 'all';
+
+  function normalize(str) {
+    return (str || '').toLowerCase()
+      .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+      .replace(/[^\w\s]/g, ' ');
+  }
+
+  function toggleMesa(header) {
+    const card = header.closest('.mesa-card');
+    card.classList.toggle('open');
+  }
+
+  function toggleDay(day, btn) {
+    activeDay = day;
+    document.querySelectorAll('.filter-group').forEach((g, i) => {
+      if (i === 0) g.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    });
+    // target day buttons specifically
+    document.querySelectorAll('.filter-btn[onclick^="toggleDay"]').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    applyFilters();
+  }
+
+  function toggleType(type, btn) {
+    activeType = type;
+    document.querySelectorAll('.filter-btn[onclick^="toggleType"]').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    applyFilters();
+  }
+
+  function applyFilters() {
+    const query = normalize(document.getElementById('searchInput').value);
+    let visibleCount = 0;
+
+    // Handle mesa cards
+    document.querySelectorAll('.mesa-card').forEach(card => {
+      const cardDay = card.dataset.day;
+      const cardType = card.dataset.type;
+      const searchText = normalize(card.dataset.search + ' ' + card.innerText);
+
+      const dayMatch = activeDay === 'all' || cardDay === activeDay;
+      const typeMatch = activeType === 'all' || cardType === activeType;
+      const searchMatch = !query || searchText.includes(query);
+
+      if (dayMatch && typeMatch && searchMatch) {
+        card.classList.remove('hidden');
+        visibleCount++;
+      } else {
+        card.classList.add('hidden');
+      }
+    });
+
+    // Handle poster cards
+    document.querySelectorAll('.poster-card').forEach(card => {
+      const section = card.closest('.poster-section');
+      const sectionDay = section ? section.dataset.day : 'all';
+      const searchText = normalize(card.dataset.search + ' ' + card.innerText);
+
+      const dayMatch = activeDay === 'all' || sectionDay === activeDay;
+      const typeMatch = activeType === 'all' || activeType === 'poster';
+      const searchMatch = !query || searchText.includes(query);
+
+      if (dayMatch && typeMatch && searchMatch) {
+        card.classList.remove('hidden');
+        visibleCount++;
+      } else {
+        card.classList.add('hidden');
+      }
+    });
+
+    // Handle day blocks visibility
+    document.querySelectorAll('.day-block').forEach(block => {
+      const blockDay = block.dataset.day;
+      const dayMatch = activeDay === 'all' || blockDay === activeDay;
+      block.style.display = dayMatch ? '' : 'none';
+    });
+
+    // Handle special sections (conf, talleres, invited)
+    const confSec = document.getElementById('sec-conf');
+    const tallerSec = document.getElementById('sec-talleres');
+
+    if (confSec) {
+      const typeMatch = activeType === 'all' || activeType === 'conf';
+      const dayMatch = activeDay === 'all';
+      confSec.style.display = (typeMatch && dayMatch) ? '' : 'none';
+      if (typeMatch && dayMatch) visibleCount++;
+    }
+    if (tallerSec) {
+      const typeMatch = activeType === 'all' || activeType === 'taller';
+      const dayMatch = activeDay === 'all' || activeDay === 'mie';
+      tallerSec.style.display = (typeMatch && dayMatch) ? '' : 'none';
+      if (typeMatch && dayMatch) visibleCount++;
+    }
+
+    // Handle poster sections visibility
+    document.querySelectorAll('.poster-section').forEach(sec => {
+      const sectionDay = sec.dataset.day;
+      const visiblePosters = sec.querySelectorAll('.poster-card:not(.hidden)').length;
+      const dayMatch = activeDay === 'all' || sectionDay === activeDay;
+      const typeMatch = activeType === 'all' || activeType === 'poster';
+      sec.style.display = (dayMatch && typeMatch && visiblePosters > 0) ? '' : 'none';
+    });
+
+    // Update count
+    const total = document.querySelectorAll('.mesa-card:not(.hidden)').length +
+                  document.querySelectorAll('.poster-card:not(.hidden)').length;
+    document.getElementById('resultsCount').textContent = query ? `${total} resultado(s)` : '';
+
+    // No results
+    const hasVisible = document.querySelectorAll('.mesa-card:not(.hidden)').length > 0 ||
+                       document.querySelectorAll('.poster-card:not(.hidden)').length > 0 ||
+                       (confSec && confSec.style.display !== 'none') ||
+                       (tallerSec && tallerSec.style.display !== 'none');
+    document.getElementById('noResults').classList.toggle('visible', !hasVisible && !!query);
+  }
+</script>
+</body>
+</html>
